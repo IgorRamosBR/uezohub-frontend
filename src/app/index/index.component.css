@@ -2,10 +2,9 @@
 
 #header-index {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/background-index.jpg') fixed;
-    background-size: 100% auto;
-    opacity: 0.9;
     background-repeat: no-repeat;
     background-size: cover;
+    opacity: 0.9;
     color: #fff;
     overflow: hidden;
     position: relative;
@@ -59,4 +58,30 @@
     .navbar-brand img {
       width: 70%;
     }
+}
+.slicknav_btn {
+  border-color: aquamarine;
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+  color: #fff;
+  padding: 0 22px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  line-height: 40px;
+  border-radius: 30px;
+  background: transparent;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-expand-lg .navbar-nav li a:hover,
+.navbar-expand-lg .navbar-nav li .active > a,
+.navbar-expand-lg .navbar-nav li a:focus {
+  color: aquamarine;
+}
+
+.navbar .nav-link.active {
+  color: #fff !important;
+  background: #61D2B4;
 }
