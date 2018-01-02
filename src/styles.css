@@ -6,11 +6,16 @@ body {
 }
 
 .texto-primario {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins Bold', 'Poppins Regular', 'Poppins';
     color: #00BFA5;
 }
 
 .texto-secundario {
+    font-family: 'Poppins', sans-serif;
+    color: #333333;
+}
+
+.texto-destaque {
     font-family: 'Poppins', sans-serif;
     color: #dddddd;
 }
