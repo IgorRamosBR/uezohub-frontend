@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSelectModule} from '@angular/material/select';
-import { MatIconModule, MatIconRegistry } from '@angular/material';
+import {MatButtonModule, MatTableModule, MatSortModule, MatInputModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
@@ -25,14 +25,14 @@ import { PainelProfessorComponent } from './painel-professor/painel-professor.co
     BrowserAnimationsModule,
     MatToolbarModule,
     MatSelectModule,
-    MatIconModule
+    MatButtonModule,
+    MatTableModule,
+    MatSortModule,
+    MatInputModule
   ],
-  providers: [MatIconRegistry],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
-  constructor(
-    public matIconRegistry: MatIconRegistry) {
-    matIconRegistry.registerFontClassAlias('fontawesome', 'fa');
-    }
+
 }
