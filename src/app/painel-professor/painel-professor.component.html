@@ -1,0 +1,31 @@
+<app-toolbar></app-toolbar>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <span class="texto-secundario texto-subtitulo">Disciplinas</span>
+    </div>
+    <div class="col-md-3">
+      <mat-form-field>
+        <mat-select placeholder="Todos os Cursos">
+          <mat-option *ngFor="let curso of cursos" [value]="curso.value">
+            {{ curso.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-md-4">
+      <span></span>
+    </div>
+
+    <div class="col-md-1">
+      <mat-icon fontSet="fa" class="size" fontIcon="fa-search"></mat-icon>
+    </div>
+    <div class="col-md-1">
+      <mat-icon fontSet="fa" class="size" fontIcon="fa-bars"></mat-icon>
+      <mat-icon fontSet="fa" class="size" fontIcon="fa-th-large"></mat-icon>
+    </div>
+    
+      
+  </div>
+    
+</div>
