@@ -8,11 +8,15 @@ import { MatTableDataSource, MatSort } from '@angular/material';
 })
 export class PainelProfessorComponent {
 
-  linhaSelecionada: number = -1;
+  linhaSelecionada = -1;
   colunas = ['nome', 'curso', 'data'];
+  cursos = [
+    {value: 1, viewValue: 'Ciência da Computação'},
+    {value: 2, viewValue: 'Análise e Desenvolvimento de Sistemas'}
+  ];
   dataSource = new MatTableDataSource<Element>(DADOS);
-  
-  @ViewChild(MatSort) sort : MatSort;
+
+  @ViewChild(MatSort) sort: MatSort;
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
@@ -30,10 +34,6 @@ export class PainelProfessorComponent {
     console.log(row.id);
   }
 
-  cursos = [
-    {value: 1, viewValue: 'Ciência da Computação'},
-    {value: 2, viewValue: 'Análise e Desenvolvimento de Sistemas'}
-  ];
 
 }
 
@@ -48,4 +48,4 @@ const DADOS: Element[] = [
   {id: 1, nome: 'Construção de Algoritmos', curso: 'TADS', data: '15/10/17'},
   {id: 2, nome: 'Estrutura de Dados', curso: 'TADS', data: '10/10/17'},
   {id: 3, nome: 'Cálculo I', curso: 'CC', data: '10/10/17'},
-]
+];

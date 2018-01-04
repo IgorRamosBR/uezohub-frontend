@@ -18,7 +18,7 @@
       </ol>
   </nav>
 
-  <div class="mat-elevation-z8">
+  <div class="mat-elevation-z8" >
 
       <div class="filtro-header">
           <mat-form-field [style.width]="'100%'">
@@ -34,19 +34,19 @@
           <mat-header-cell *matHeaderCellDef [hidden]="true"> Id </mat-header-cell>
           <mat-cell *matCellDef="let element">{{element.id}} </mat-cell>
         </ng-container>
-        <!-- Name Column -->
+        <!-- Nome Column -->
         <ng-container matColumnDef="nome">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
           <mat-cell *matCellDef="let element"><i class="fa fa-folder"> </i>  {{element.nome}} </mat-cell>
         </ng-container>
     
-        <!-- Weight Column -->
+        <!-- Curso Column -->
         <ng-container matColumnDef="curso">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Curso </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.curso}} </mat-cell>
         </ng-container>
     
-        <!-- Symbol Column -->
+        <!-- Data Column -->
         <ng-container matColumnDef="data">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Último Upload </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.data}} </mat-cell>
