@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { PainelProfessorComponent } from './painel-professor/painel-professor.component';
+import { PainelCoordenadorComponent } from './painel-coordenador/painel-coordenador.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -18,7 +20,8 @@ import { PainelProfessorComponent } from './painel-professor/painel-professor.co
     AppComponent,
     IndexComponent,
     ToolbarComponent,
-    PainelProfessorComponent
+    PainelProfessorComponent,
+    PainelCoordenadorComponent
   ],
   imports: [
     BrowserModule,

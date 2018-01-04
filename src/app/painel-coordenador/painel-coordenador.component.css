@@ -1,0 +1,99 @@
+.toolbar {
+    background: #fff;
+    box-shadow: 0px 3px 6px 3px rgba(0, 0, 0, 0.06);
+    padding: 10px 50px;
+}
+
+.toolbar-titulo {
+    font-size: 28px;
+    font-style: normal;
+}
+
+.toolbar-spacer {
+    flex: 1 1 auto;
+}
+
+.toolbar-itens {
+    margin-right: 40px;
+}
+
+.toolbar-itens a{
+    color: #00BFA5;
+    text-decoration: none;
+}
+
+.toolbar-itens a:hover {
+    color: #606060;
+}
+.toolbar-toogle {
+    margin-left: 300px;
+}
+.toolbar-toogle a{
+    font-size: 28px;
+    color: #00BFA5;
+    padding-right: 15px;
+    
+}
+
+.sidenav-menu {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    margin: 0;
+    z-index: 9998;
+    background-color: #00BFA5;
+    list-style: none;
+    color: #fff;
+    padding: 0;
+    text-align: center;
+}
+
+.sidenav-titulo {
+    font-size: 28px;
+    font-weight: 700;
+    height: 64px;
+    margin: 0 auto;
+    padding: 10px 40px;
+    background-color: #009688;
+}
+
+.sidenav-user-pic {
+    font-size: 128px;
+}
+
+.sidenav-itens {
+    font-size: 20px;
+    padding: 10px;
+}
+
+.sidenav-itens a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.sidenav-itens:hover{
+    background-color: #009688;
+}
+/*
+@media screen and (max-width: 767px) {
+
+    .sidenav-menu {
+        display: none;
+    }
+
+
+    
+}
+
+@media screen and (min-width: 767px) {
+
+    .toolbar-toogle {
+        font-size: 28px;
+        color: #00BFA5;
+        padding-right: 15px;  
+        display: none;     
+    }
+    
+}*/
