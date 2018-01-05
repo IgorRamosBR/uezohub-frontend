@@ -16,3 +16,111 @@
   <li class="sidenav-itens">Professores</li>
   <li class="sidenav-itens">Coordenadores</li>
 </ul>
+
+<div [ngClass]="{'container' : exibindoMenu === false,
+                 'painel' : exibindoMenu === true}" >
+  <div class="row cards"> 
+    <div class="col-xl-3">
+        <mat-card class="card-info">
+            <div class="row centralizar-verticalmente"> 
+              <div class="col-md-5" style="margin:0;padding:0;">
+                  <span class="card-icone"><i class="fa fa-user-circle-o" aria-hidden="true" style="margin:0;padding:0;"></i></span>
+              </div>
+              <div class="col-md-7" style="padding-left:0">
+                  <p class="texto-secundario card-contador">70</p>
+                  <span class="texto-secundario card-descricao">Alunos ativos</span>
+              </div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-xl-3">
+        <mat-card class="card-info">
+            <div class="row centralizar-verticalmente"> 
+              <div class="col-md-5" style="margin:0;padding:0;">
+                  <span class="card-icone"><i class="fa fa-user-plus" aria-hidden="true" style="margin:0;padding:0;"></i></span>
+              </div>
+              <div class="col-md-7" style="padding-left:0">
+                  <p class="texto-secundario card-contador">35</p>
+                  <span class="texto-secundario card-descricao">Solicitações de novos alunos</span>
+              </div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-xl-3">
+        <mat-card class="card-info">
+            <div class="row centralizar-verticalmente"> 
+              <div class="col-md-5" style="margin:0;padding:0;">
+                  <span class="card-icone"><i class="fa fa-cloud-upload" aria-hidden="true" style="margin:0;padding:0;"></i></span>
+              </div>
+              <div class="col-md-7" style="padding-left:0">
+                  <p class="texto-secundario card-contador">45</p>
+                  <span class="texto-secundario card-descricao">Arquivos publicados</span>
+              </div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-xl-3">
+        <div class="col-md-3">
+            <mat-card class="card-info">
+                <div class="row centralizar-verticalmente"> 
+                  <div class="col-md-5" style="margin:0;padding:0;">
+                      <span class="card-icone"><i class="fa fa-cloud-download" aria-hidden="true" style="margin:0;padding:0;"></i></span>
+                  </div>
+                  <div class="col-md-7" style="padding-left:0">
+                      <p class="texto-secundario card-contador">45</p>
+                      <span class="texto-secundario card-descricao">Arquivos baixados</span>
+                  </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6" style="padding:40px">
+      <p class="texto-secundario subtitulos">Solicitações</p> 
+      <div class="mat-elevation-z8" >
+
+          <div class="filtro-header">
+              <mat-form-field [style.width]="'100%'">
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+              </mat-form-field>
+          </div>
+          
+          <mat-table #table [dataSource]="dataSource" matSort>
+        
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+            <ng-container matColumnDef="id">
+              <mat-header-cell *matHeaderCellDef [hidden]="true"> Id </mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.id}} </mat-cell>
+            </ng-container>
+            <!-- Nome Column -->
+            <ng-container matColumnDef="nome">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Aluno </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
+            </ng-container>
+        
+            <!-- Aluno Column -->
+            <ng-container matColumnDef="matricula">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Matrícula </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.matricula}} </mat-cell>
+            </ng-container>
+        
+            <!-- Situação Column -->
+            <ng-container matColumnDef="situacao">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Situação </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.situacao}} </mat-cell>
+            </ng-container>
+        
+            <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: colunas;" >
+            </mat-row>
+          </mat-table>
+        </div>
+    </div>
+    <div class="col-md-6">
+      
+    </div>
+  </div>
+</div>

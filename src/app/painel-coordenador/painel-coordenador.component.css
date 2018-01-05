@@ -76,24 +76,74 @@
 .sidenav-itens:hover{
     background-color: #009688;
 }
-/*
-@media screen and (max-width: 767px) {
 
-    .sidenav-menu {
-        display: none;
-    }
-
-
-    
+.painel {
+    position: fixed;
+    left: 310px;
+    top: 64px;
 }
 
-@media screen and (min-width: 767px) {
+.cards {
+    padding: 20px;
+    position: relative;
+    width: 1024px;
+}
 
-    .toolbar-toogle {
-        font-size: 28px;
-        color: #00BFA5;
-        padding-right: 15px;  
-        display: none;     
-    }
-    
-}*/
+.card-info {
+    width: 230px;
+    height: 100px;  
+    text-align: center;
+}
+
+.card-icone {
+    font-size: 60px;
+    color: #009688;
+}
+
+.card-contador {
+    font-size: 32px;
+    text-align: center;
+    margin: 0;
+}
+
+.card-descricao {
+    font-size: 14px;
+}
+
+.centralizar-verticalmente {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.filtro-header {
+    min-height: 64px;
+    padding: 8px 24px 0;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 560px;
+    font-family: 'Poppins Bold', 'Poppins Regular', 'Poppins';
+    font-size: 10px;
+  }
+
+  .mat-cell {
+    font-family: 'Poppins Bold', 'Poppins Regular', 'Poppins';
+    font-size: 12px;
+  }
+  
+  .mat-header-cell {
+    font-weight: 700;
+    color: #606060;
+    font-size: 10px;
+  }
+  
+  .mat-header-cell.mat-sort-header-sorted {
+    color: black;
+  }
+  
+ .subtitulos {
+    font-size: 24px;
+    text-align: center;
+ }

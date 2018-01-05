@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSelectModule} from '@angular/material/select';
-import {MatButtonModule, MatTableModule, MatSortModule, MatInputModule } from '@angular/material';
+import {MatButtonModule, MatTableModule, MatSortModule, MatInputModule, MatCardModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
@@ -31,11 +31,12 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatTableModule,
     MatSortModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
 
 }
