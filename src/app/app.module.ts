@@ -12,6 +12,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { PainelProfessorComponent } from './painel-professor/painel-professor.component';
 import { PainelCoordenadorComponent } from './painel-coordenador/painel-coordenador.component';
 import { FormsModule } from '@angular/forms';
+import { EscolhaCursoComponent } from './escolha-curso/escolha-curso.component';
 
 
 
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     IndexComponent,
     ToolbarComponent,
     PainelProfessorComponent,
-    PainelCoordenadorComponent
+    PainelCoordenadorComponent,
+    EscolhaCursoComponent
   ],
   imports: [
     BrowserModule,

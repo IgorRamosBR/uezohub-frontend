@@ -1,0 +1,13 @@
+.titulo {
+    padding: 20px;
+    font-size: 28px;
+}
+
+.card-curso {
+    width: 280px;
+    height: 156px;
+    background-color: #00BFA5;
+    margin: 20px 40px;
+    font-size: 28px;
+    color: #fff;
+}
