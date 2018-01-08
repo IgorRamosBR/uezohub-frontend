@@ -1,20 +1,27 @@
-<app-toolbar></app-toolbar>
+<mat-toolbar class="toolbar">
+  <span class="toolbar-titulo texto-primario">UezoHub</span>
+  <span class="toolbar-spacer"></span>
+  <span class="toolbar-itens texto-secundario"><a href="">Minha Conta </a></span>
+  <span class="toolbar-itens texto-secundario"><a href="">Sair </a></span>
+</mat-toolbar>
+
 <div class="container main">
   <div class="row">
     <div class="col-md-4">    </div>
     <div class="col-md-4 text-center">
-      <span class="texto-secundario texto-subtitulo">Disciplinas</span>
+      <span class="texto-secundario texto-subtitulo">{{curso}}</span>
     </div>    
     <div class="col-md-4">    </div>
   </div>
 </div>
+
 <div class="container-fluid">
   <hr>
 </div>
 <div class="container">
   <nav aria-label="breadcrumb">
       <ol class="breadcrumb" style="background:transparent;">
-        <li class="breadcrumb-item active" aria-current="page">Todas as Disciplinas</li>
+        <li class="breadcrumb-item active" aria-current="page">{{curso}}</li>
       </ol>
   </nav>
 
@@ -36,14 +43,14 @@
         </ng-container>
         <!-- Nome Column -->
         <ng-container matColumnDef="nome">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Disciplina </mat-header-cell>
           <mat-cell *matCellDef="let element"><i class="fa fa-folder"> </i>  {{element.nome}} </mat-cell>
         </ng-container>
     
         <!-- Curso Column -->
-        <ng-container matColumnDef="curso">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Curso </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.curso}} </mat-cell>
+        <ng-container matColumnDef="quantidadeArquivos">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Quantidade de Arquivos </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.quantidadeArquivos}} </mat-cell>
         </ng-container>
     
         <!-- Data Column -->
