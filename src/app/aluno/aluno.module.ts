@@ -1,8 +1,9 @@
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatToolbar, MatTableModule, MatSortModule, MatInputModule } from '@angular/material';
+import { MatToolbar, MatTableModule, MatSortModule, MatInputModule, MatCardModule } from '@angular/material';
 import { PainelAlunoComponent } from './painel-aluno/painel-aluno.component';
+import { EscolhaCursoComponent } from './escolha-curso/escolha-curso.component';
 
 @NgModule({
   imports: [
@@ -10,13 +11,16 @@ import { PainelAlunoComponent } from './painel-aluno/painel-aluno.component';
     MatToolbarModule,
     MatTableModule,
     MatSortModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
   declarations: [
-    PainelAlunoComponent
+    PainelAlunoComponent,
+    EscolhaCursoComponent
   ],
   exports: [
-    PainelAlunoComponent
+    PainelAlunoComponent,
+    EscolhaCursoComponent
   ]
 })
 export class AlunoModule { }
