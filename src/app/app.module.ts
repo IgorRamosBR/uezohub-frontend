@@ -10,10 +10,10 @@ import {MatButtonModule, MatTableModule, MatSortModule, MatInputModule, MatCardM
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { PainelCoordenadorComponent } from './painel-coordenador/painel-coordenador.component';
 import { FormsModule } from '@angular/forms';
 import { PainelAlunoComponent } from './aluno/painel-aluno/painel-aluno.component';
 import { ProfessorModule } from './professor/professor.module';
+import { CoordenadorModule } from './coordenador/coordenador.module';
 
 
 
@@ -23,7 +23,6 @@ import { ProfessorModule } from './professor/professor.module';
     AppComponent,
     IndexComponent,
     ToolbarComponent,
-    PainelCoordenadorComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +30,7 @@ import { ProfessorModule } from './professor/professor.module';
 
     AlunoModule,
     ProfessorModule,
+    CoordenadorModule,
 
     MatToolbarModule,
     MatSelectModule,
