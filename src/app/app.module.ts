@@ -1,3 +1,4 @@
+import { AlunoModule } from './aluno/aluno.module';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -13,7 +14,8 @@ import { PainelProfessorComponent } from './painel-professor/painel-professor.co
 import { PainelCoordenadorComponent } from './painel-coordenador/painel-coordenador.component';
 import { FormsModule } from '@angular/forms';
 import { EscolhaCursoComponent } from './escolha-curso/escolha-curso.component';
-import { PainelAlunoComponent } from './painel-aluno/painel-aluno.component';
+import { PainelAlunoComponent } from './aluno/painel-aluno/painel-aluno.component';
+
 
 
 
@@ -24,12 +26,14 @@ import { PainelAlunoComponent } from './painel-aluno/painel-aluno.component';
     ToolbarComponent,
     PainelProfessorComponent,
     PainelCoordenadorComponent,
-    EscolhaCursoComponent,
-    PainelAlunoComponent
+    EscolhaCursoComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+
+    AlunoModule,
+
     MatToolbarModule,
     MatSelectModule,
     MatButtonModule,
