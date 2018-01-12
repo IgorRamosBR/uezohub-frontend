@@ -77,6 +77,10 @@
     background-color: #009688;
 }
 
+.sidenav-itens.ativo {
+    background-color: #009688;
+}
+
 .painel {
     position: fixed;
     left: 310px;
