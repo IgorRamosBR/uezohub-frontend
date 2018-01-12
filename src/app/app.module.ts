@@ -12,6 +12,7 @@ import { CoordenadorModule } from './coordenador/coordenador.module';
 import { SharedModule } from './shared/shared.module';
 import { IndexModule } from './index/index.module';
 import { AlunoModule } from './aluno/aluno.module';
+import { MatToolbarModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,8 @@ import { AlunoModule } from './aluno/aluno.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+
+    MatToolbarModule,
 
     AppRoutingModule,
     AlunoModule,

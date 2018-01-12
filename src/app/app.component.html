@@ -4,4 +4,41 @@
 <!--app-painel-coordenador></app-painel-coordenador>-->
 <!--<app-escolha-curso></app-escolha-curso>-->
 <!--<app-painel-aluno></app-painel-aluno>-->
-<router-outlet></router-outlet>
+<mat-toolbar class="toolbar">
+    <span class="toolbar-toogle" (click)="exibindoMenu = !exibindoMenu" [ngStyle]="{'margin-left': exibindoMenu == false ? 0 : '300px'}">
+        <a href="javascript:;">
+            <i class="fa fa-bars"></i>
+        </a>
+    </span>
+    <!--<span class="toolbar-titulo texto-primario">UezoHub</span>-->
+    <span class="toolbar-spacer"></span>
+    <span class="toolbar-itens texto-secundario">
+        <a href="">Sair </a>
+    </span>
+</mat-toolbar>
+
+<ul class="sidenav-menu" [hidden]="!exibindoMenu">
+    <li class="sidenav-titulo">UezoHub</li>
+    <li class="sidenav-user-pic">
+        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+    </li>
+    <li class="sidenav-itens" style="margin-bottom:20px;">Igor Ramos
+        <i class="fa fa-pencil" style="margin-left:10px" aria-hidden="true"></i>
+    </li>
+    <hr>
+    <li class="sidenav-itens" routerLinkActive="ativo">
+        <a routerLink="/painel-coordenador">Home</a>
+    </li>
+    <li class="sidenav-itens" routerLinkActive="ativo"><a routerLink="/cursos">Cursos</a></li>
+    <li class="sidenav-itens" routerLinkActive="ativo">Disciplinas</li>
+    <li class="sidenav-itens" routerLinkActive="ativo">Professores</li>
+    <li class="sidenav-itens" routerLinkActive="ativo">Coordenadores</li>
+</ul>
+
+
+
+<div [ngClass]="{'container' : exibindoMenu === false,
+                 'painel' : exibindoMenu === true}">
+    <router-outlet></router-outlet>
+
+</div>
