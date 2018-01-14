@@ -1,6 +1,6 @@
-import { Curso } from './../cursos/curso';
 import { Component, ViewChild } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormGroupDirective } from '@angular/forms';
+import { Curso } from '../curso';
 
 @Component({
   selector: 'app-cursos-form',
@@ -13,7 +13,6 @@ export class CursosFormComponent {
   curso = new Curso();
 
   salvar(f: FormGroupDirective) {
-    this.curso.ativo = this.ativo;
     console.log(this.curso);
     if(f)
       f.resetForm();

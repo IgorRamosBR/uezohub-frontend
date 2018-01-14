@@ -21,7 +21,7 @@
 
 
     <div class="form-group">
-      <mat-checkbox [checked]="ativo" [(ngModel)]="ativo" name="ativo">Ativo</mat-checkbox>
+      <mat-checkbox [(checked)]="curso.ativo" [(ngModel)]="curso.ativo" name="ativo">Ativo</mat-checkbox>
     </div>
 
     <button mat-raised-button type="submit" color="primary" class="botao" [disabled]="f.invalid">Salvar</button>

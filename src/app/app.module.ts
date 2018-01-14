@@ -1,3 +1,4 @@
+import { CursosModule } from './cursos/cursos.module';
 import { AppRoutingModule } from './app-routing.module';
 import { PainelAlunoComponent } from './aluno/painel-aluno/painel-aluno.component';
 import { PainelCoordenadorComponent } from './coordenador/painel-coordenador/painel-coordenador.component';
@@ -28,6 +29,7 @@ import { MatToolbarModule } from '@angular/material';
     AlunoModule,
     ProfessorModule,
     CoordenadorModule,
+    CursosModule,
     IndexModule,
     SharedModule
   ],

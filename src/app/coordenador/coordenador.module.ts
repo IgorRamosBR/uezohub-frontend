@@ -3,8 +3,6 @@ import { MatCardModule, MatInputModule, MatSortModule, MatTableModule, MatButton
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PainelCoordenadorComponent } from './painel-coordenador/painel-coordenador.component';
-import { CursosComponent } from './cursos/cursos.component';
-import { CursosFormComponent } from './cursos-form/cursos-form.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -21,12 +19,9 @@ import { FormsModule } from '@angular/forms';
   ],
   declarations: [
     PainelCoordenadorComponent,
-    CursosComponent,
-    CursosFormComponent
   ],
   exports: [
-    PainelCoordenadorComponent,
-    CursosComponent
+    PainelCoordenadorComponent
   ]
 })
 export class CoordenadorModule { }
