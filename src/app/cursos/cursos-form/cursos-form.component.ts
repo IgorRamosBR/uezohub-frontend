@@ -38,10 +38,14 @@ export class CursosFormComponent implements OnInit {
   }
 
   salvar(f: FormGroupDirective) {
-    console.log(this.curso);
-    this.cursoService.salvar(this.curso)
-      .then(() => this.buscarTodosOsCursos());
-
+    if (this.curso.id) {
+      this.cursoService.atualizar(this.curso.id, this.curso)
+        .then(() => this.buscarTodosOsCursos());
+    } else {
+      this.cursoService.salvar(this.curso)
+        .then(() => this.buscarTodosOsCursos());
+    }
+    console.log('passei aqui');
     this.dataSource.connect();
     if (f)
       f.resetForm();
@@ -55,6 +59,16 @@ export class CursosFormComponent implements OnInit {
         this.dataSource = new MatTableDataSource(cursos);
         this.dataSource.sort = this.sort;
         this.changeDetectorRefs.detectChanges(); });
+  }
+
+  editar(curso: Curso) {
+    console.log(curso);
+    this.curso = curso;
+  }
+
+  novo() {
+    this.curso = new Curso();
+    this.ativo = true;
   }
 
   getColor(ativo: boolean) {

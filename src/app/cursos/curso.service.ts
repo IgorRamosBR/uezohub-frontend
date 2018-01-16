@@ -16,11 +16,17 @@ export class CursoService {
     return this.http.get(this.cursoUrl)
       .toPromise()
       .then(response => response.json());
-  }
+    }
 
-  salvar(curso: Curso): Promise<any> {
-    return this.http.post(this.cursoUrl, curso)
+    salvar(curso: Curso): Promise<any> {
+      return this.http.post(this.cursoUrl, curso)
       .toPromise()
       .then(response => response.json());
+    }
+
+    atualizar(id: number, curso: Curso): Promise<any> {
+      return this.http.put(`${this.cursoUrl}/${id}`, curso)
+        .toPromise()
+        .then(response => response.json());
+    }
   }
-}

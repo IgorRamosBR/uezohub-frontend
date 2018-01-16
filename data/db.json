@@ -31,14 +31,19 @@
       "id": 6
     },
     {
-      "ativo": false,
-      "nome": "Naval",
+      "ativo": true,
+      "nome": "Construção Naval",
       "id": 7
     },
     {
       "ativo": true,
       "nome": "Ciências Biológicas",
       "id": 8
+    },
+    {
+      "ativo": false,
+      "nome": "Veterinária",
+      "id": 9
     }
   ]
 }

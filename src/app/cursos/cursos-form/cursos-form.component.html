@@ -1,7 +1,7 @@
 <div style="padding:20px">
     <form autocomplete="off" #f="ngForm" (ngSubmit)="salvar(f)">
 
-        <h3 class="texto-secundario"> Novo Curso </h3>
+        <h3 class="texto-secundario"> {{ curso.id ? 'Atualizar' : 'Novo'}} Curso </h3>
         <hr>
         <!--
     <div class="form-group">
@@ -25,6 +25,7 @@
         </div>
 
         <button mat-raised-button type="submit" color="primary" class="botao" [disabled]="f.invalid">Salvar</button>
+        <button mat-raised-button type="button" color="primary" class="botao" (click)="novo()">Novo</button>
     </form>
     <div class="mat-elevation-z8" style="margin-top: 30px;">
 
@@ -54,7 +55,7 @@
                 <mat-header-cell *matHeaderCellDef style="text-align:center"> Ações </mat-header-cell>
                 <mat-cell *matCellDef="let element">
                     <div style="text-align:center">
-                        <button mat-button color="primary" style="margin:0 auto">Editar</button>
+                        <button mat-button color="primary" style="margin:0 auto" (click)="editar(element)">Editar</button>
                     </div>
                 </mat-cell>
             </ng-container>
