@@ -16,6 +16,7 @@ import { IndexModule } from './index/index.module';
 import { AlunoModule } from './aluno/aluno.module';
 import { MatToolbarModule } from '@angular/material';
 import { HttpModule } from '@angular/http';
+import { DisciplinaModule } from './disciplina/disciplina.module';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { HttpModule } from '@angular/http';
     ProfessorModule,
     CoordenadorModule,
     CursosModule,
+    DisciplinaModule,
     IndexModule,
     SharedModule
   ],

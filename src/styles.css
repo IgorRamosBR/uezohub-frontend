@@ -33,6 +33,10 @@ body {
     top: 64px;
 }
 
+.espacamento-container {
+    padding: 20px;
+}
+
 /* NAVEGACAO */
 .toolbar {
     background: #fff;
