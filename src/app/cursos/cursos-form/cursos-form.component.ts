@@ -15,7 +15,7 @@ import { CursoService } from './../curso.service';
 export class CursosFormComponent implements OnInit {
 
   ativo = true;
-  colunas = ['nome', 'ativo'];
+  colunas = ['nome', 'ativo', 'id'];
 
   curso = new Curso();
   cursos: Curso[] = [];

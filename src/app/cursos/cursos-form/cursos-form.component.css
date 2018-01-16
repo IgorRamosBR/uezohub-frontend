@@ -33,3 +33,11 @@
 .mat-header-cell.mat-sort-header-sorted {
   color: black;
 }
+
+.mat-column-ativo {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+

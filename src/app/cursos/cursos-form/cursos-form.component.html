@@ -36,11 +36,6 @@
 
         <mat-table #table [dataSource]="dataSource" matSort>
 
-
-            <ng-container matColumnDef="id">
-                <mat-header-cell *matHeaderCellDef [hidden]="true"> Id </mat-header-cell>
-                <mat-cell *matCellDef="let element">{{element.id}} </mat-cell>
-            </ng-container>
             <!-- Nome Column -->
             <ng-container matColumnDef="nome">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Curso </mat-header-cell>
@@ -50,13 +45,18 @@
             <!-- Ativo Column -->
             <ng-container matColumnDef="ativo">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Ativo </mat-header-cell>
-                <mat-cell *matCellDef="let element" [ngStyle]= "{'color':getColor(element.ativo)}"> {{element.ativo | ativoConversor}} </mat-cell>
+                <mat-cell *matCellDef="let element" [ngStyle]="{'color':getColor(element.ativo)}">
+                    {{element.ativo | ativoConversor}} </mat-cell>
             </ng-container>
 
             <!-- Ações Column -->
-            <ng-container matColumnDef="Ações">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Ações </mat-header-cell>
-
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef style="text-align:center"> Ações </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <div style="text-align:center">
+                        <button mat-button color="primary" style="margin:0 auto">Editar</button>
+                    </div>
+                </mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
