@@ -2,6 +2,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AtivoConversorPipe } from './ativo-conversor.pipe';
 
 @NgModule({
   imports: [
@@ -9,10 +10,12 @@ import { CommonModule } from '@angular/common';
     MatToolbarModule
   ],
   declarations: [
-    ToolbarComponent
+    ToolbarComponent,
+    AtivoConversorPipe
   ],
   exports: [
-    ToolbarComponent
+    ToolbarComponent,
+    AtivoConversorPipe
   ]
 })
 export class SharedModule { }

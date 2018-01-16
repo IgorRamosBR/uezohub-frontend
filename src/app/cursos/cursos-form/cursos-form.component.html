@@ -50,7 +50,7 @@
             <!-- Ativo Column -->
             <ng-container matColumnDef="ativo">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Ativo </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.ativo}} </mat-cell>
+                <mat-cell *matCellDef="let element" [ngStyle]= "{'color':getColor(element.ativo)}"> {{element.ativo | ativoConversor}} </mat-cell>
             </ng-container>
 
             <!-- Ações Column -->

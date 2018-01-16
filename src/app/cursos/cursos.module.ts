@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { MatButtonModule, MatCheckboxModule, MatInputModule, MatTableModule, MatSortModule } from '@angular/material';
 import { CursosFormComponent } from './cursos-form/cursos-form.component';
 import { NgModule } from '@angular/core';
@@ -10,6 +11,9 @@ import { CursosTabelaComponent } from './cursos-tabela/cursos-tabela.component';
   imports: [
     CommonModule,
     FormsModule,
+
+    SharedModule,
+
     MatInputModule,
     MatButtonModule,
     MatCheckboxModule,

@@ -56,4 +56,12 @@ export class CursosFormComponent implements OnInit {
         this.dataSource.sort = this.sort;
         this.changeDetectorRefs.detectChanges(); });
   }
+
+  getColor(ativo: boolean) {
+    if ( ativo === true) {
+      return '#009688';
+    } else {
+      return '#F44336';
+    }
+  }
 }
