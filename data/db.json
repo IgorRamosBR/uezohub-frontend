@@ -1,0 +1,44 @@
+{
+  "cursos": [
+    {
+      "id": 1,
+      "nome": "Ciência da Computação",
+      "ativo": true
+    },
+    {
+      "id": 2,
+      "nome": "Análise e Desenvolvimento de Sistemas",
+      "ativo": false
+    },
+    {
+      "ativo": true,
+      "nome": "Farmácia",
+      "id": 3
+    },
+    {
+      "ativo": false,
+      "nome": "Biotecnologia",
+      "id": 4
+    },
+    {
+      "ativo": true,
+      "nome": "Polímeros",
+      "id": 5
+    },
+    {
+      "ativo": false,
+      "nome": "Produção de Fármacos",
+      "id": 6
+    },
+    {
+      "ativo": false,
+      "nome": "Naval",
+      "id": 7
+    },
+    {
+      "ativo": true,
+      "nome": "Ciências Biológicas",
+      "id": 8
+    }
+  ]
+}

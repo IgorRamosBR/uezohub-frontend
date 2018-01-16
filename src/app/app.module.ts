@@ -1,3 +1,4 @@
+import { CursoService } from './cursos/curso.service';
 import { CursosModule } from './cursos/cursos.module';
 import { AppRoutingModule } from './app-routing.module';
 import { PainelAlunoComponent } from './aluno/painel-aluno/painel-aluno.component';
@@ -14,6 +15,8 @@ import { SharedModule } from './shared/shared.module';
 import { IndexModule } from './index/index.module';
 import { AlunoModule } from './aluno/aluno.module';
 import { MatToolbarModule } from '@angular/material';
+import { HttpModule } from '@angular/http';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import { MatToolbarModule } from '@angular/material';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpModule,
 
     MatToolbarModule,
 
@@ -33,7 +37,7 @@ import { MatToolbarModule } from '@angular/material';
     IndexModule,
     SharedModule
   ],
-  providers: [],
+  providers: [CursoService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
