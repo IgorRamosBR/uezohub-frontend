@@ -10,7 +10,7 @@ const rotas: Routes = [
     {path: 'disciplinas', component: DisciplinaFormComponent},
     {path: '**', redirectTo: 'painel-coordenador'}
   ];
-  
+
   @NgModule({
     imports: [
       RouterModule.forRoot(rotas),
@@ -20,6 +20,5 @@ const rotas: Routes = [
      ]
   })
   export class AppRoutingModule {
-  
+
   }
-  

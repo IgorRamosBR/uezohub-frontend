@@ -45,5 +45,63 @@
       "nome": "Veterinária",
       "id": 9
     }
+  ],
+  "disciplina": [
+    {
+      "nome": "BD I",
+      "codigo": "CCB1053",
+      "curso": {
+        "id": 1,
+        "nome": "Ciência da Computação",
+        "ativo": true
+      },
+      "id": 3
+    },
+    {
+      "nome": "Linguagens Formais e Autômatos",
+      "codigo": "CCB1012",
+      "curso": {
+        "id": 1,
+        "nome": "Ciência da Computação",
+        "ativo": true
+      },
+      "ativo": true,
+      "id": 4
+    },
+    {
+      "curso": {
+        "id": 1
+      },
+      "nome": "Compiladores",
+      "codigo": "CCB1564",
+      "ativo": true,
+      "id": 5
+    },
+    {
+      "curso": {
+        "id": 2
+      },
+      "nome": "Analise",
+      "codigo": "CCB1231",
+      "id": 6
+    },
+    {
+      "curso": {
+        "id": 3
+      },
+      "nome": "Fisica I",
+      "codigo": "CCB1020",
+      "ativo": false,
+      "id": 7
+    },
+    {
+      "curso": {
+        "id": 3
+      },
+      "nome": "Teste",
+      "codigo": "eeee",
+      "ativo": false,
+      "id": 8
+    }
   ]
 }

@@ -1,3 +1,4 @@
+import { CursosModule } from './../cursos/cursos.module';
 import { MatInputModule, MatButtonModule, MatCheckboxModule, MatSelectModule, MatTableModule, MatSortModule } from '@angular/material';
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
@@ -11,6 +12,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
 
     SharedModule,
+    CursosModule,
 
     MatInputModule,
     MatButtonModule,
@@ -19,7 +21,9 @@ import { FormsModule } from '@angular/forms';
     MatTableModule,
     MatSortModule
   ],
-  declarations: [DisciplinaFormComponent],
+  declarations: [
+    DisciplinaFormComponent
+  ],
   exports: [
     DisciplinaFormComponent
   ]

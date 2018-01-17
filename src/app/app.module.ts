@@ -17,6 +17,7 @@ import { AlunoModule } from './aluno/aluno.module';
 import { MatToolbarModule } from '@angular/material';
 import { HttpModule } from '@angular/http';
 import { DisciplinaModule } from './disciplina/disciplina.module';
+import { DisciplinaService } from './disciplina/disciplina.service';
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import { DisciplinaModule } from './disciplina/disciplina.module';
     IndexModule,
     SharedModule
   ],
-  providers: [CursoService],
+  providers: [CursoService, DisciplinaService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
