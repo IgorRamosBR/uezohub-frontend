@@ -1,3 +1,4 @@
+import { ToastyService } from 'ng2-toasty';
 import { ProfessorService } from './../professor.service';
 import { FormGroupDirective } from '@angular/forms';
 import { MatTableDataSource, MatSort } from '@angular/material';
@@ -20,7 +21,8 @@ export class ProfessorFormComponent implements OnInit {
 
   constructor(
     private professorService: ProfessorService,
-    private changeDetectorRefs: ChangeDetectorRef
+    private changeDetectorRefs: ChangeDetectorRef,
+    private toasty: ToastyService
   ) { }
 
   ngOnInit() {
@@ -36,10 +38,16 @@ export class ProfessorFormComponent implements OnInit {
   salvar(f: FormGroupDirective) {
     if (this.professor.id) {
       this.professorService.atualizar(this.professor.id, this.professor)
-        .then(() => this.buscarTodosOsProfessores());
+        .then(() => {
+          this.buscarTodosOsProfessores();
+          this.toasty.success('Professor atualizado com sucesso.');
+        });
     } else {
       this.professorService.salvar(this.professor)
-        .then(() => this.buscarTodosOsProfessores());
+        .then(() => {
+          this.buscarTodosOsProfessores();
+          this.toasty.success('Professor salvo com sucesso.');
+        });
     }
     this.dataSource.connect();
     this.novo(f);

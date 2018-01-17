@@ -22,7 +22,8 @@
         "styles.css",
         "theme.scss",
         "../node_modules/bootstrap/dist/css/bootstrap.css",
-        "../node_modules/font-awesome/css/font-awesome.css"
+        "../node_modules/font-awesome/css/font-awesome.css",
+        "../node_modules/ng2-toasty/style-bootstrap.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

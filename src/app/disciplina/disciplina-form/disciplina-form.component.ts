@@ -4,6 +4,7 @@ import { MatTableDataSource, MatSort } from '@angular/material';
 import { CursoService } from './../../cursos/curso.service';
 import { Disciplina } from './../disciplina';
 import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { ToastyService } from 'ng2-toasty';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class DisciplinaFormComponent implements OnInit {
   constructor(
     private cursoService: CursoService,
     private disciplinaService: DisciplinaService,
-    private changeDetectorRefs: ChangeDetectorRef
+    private changeDetectorRefs: ChangeDetectorRef,
+    private toasty: ToastyService
   ) { }
 
   ngOnInit() {
@@ -43,10 +45,16 @@ export class DisciplinaFormComponent implements OnInit {
     console.log(this.disciplina);
     if (this.disciplina.id) {
       this.disciplinaService.atualizar(this.disciplina.id, this.disciplina)
-        .then(() => this.buscarTodasAsDisciplinas());
+        .then(() => {
+          this.buscarTodasAsDisciplinas();
+          this.toasty.success('Disciplina atualizada com sucesso.');
+        });
     } else {
       this.disciplinaService.salvar(this.disciplina)
-        .then(() => this.buscarTodasAsDisciplinas());
+        .then(() => {
+          this.buscarTodasAsDisciplinas();
+          this.toasty.success('Disciplina salva com sucesso.');
+        });
     }
     this.dataSource.connect();
     if (f) {

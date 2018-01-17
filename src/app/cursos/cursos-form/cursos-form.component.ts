@@ -6,6 +6,7 @@ import { DataSource } from '@angular/cdk/collections';
 
 import { Curso } from '../curso';
 import { CursoService } from './../curso.service';
+import { ToastyService } from 'ng2-toasty';
 
 @Component({
   selector: 'app-cursos-form',
@@ -24,7 +25,8 @@ export class CursosFormComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private cursoService: CursoService,
-              private changeDetectorRefs: ChangeDetectorRef) {}
+              private changeDetectorRefs: ChangeDetectorRef,
+              private toasty: ToastyService) {}
 
   ngOnInit(): void {
     this.buscarTodosOsCursos();
@@ -39,10 +41,16 @@ export class CursosFormComponent implements OnInit {
   salvar(f: FormGroupDirective) {
     if (this.curso.id) {
       this.cursoService.atualizar(this.curso.id, this.curso)
-        .then(() => this.buscarTodosOsCursos());
+        .then(() => {
+          this.buscarTodosOsCursos();
+          this.toasty.success('Curso atualizado com sucesso.');
+        });
     } else {
       this.cursoService.salvar(this.curso)
-        .then(() => this.buscarTodosOsCursos());
+        .then(() => {
+          this.buscarTodosOsCursos();
+          this.toasty.success('Curso salvo com sucesso.');
+        });
     }
     this.dataSource.connect();
     if (f) {

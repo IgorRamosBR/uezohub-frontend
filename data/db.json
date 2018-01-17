@@ -31,7 +31,7 @@
       "id": 6
     },
     {
-      "ativo": true,
+      "ativo": false,
       "nome": "Construção Naval",
       "id": 7
     },
@@ -81,7 +81,7 @@
       "curso": {
         "id": 2
       },
-      "nome": "Analise",
+      "nome": "Analise Experimental",
       "codigo": "CCB1231",
       "id": 6
     },
@@ -115,7 +115,7 @@
     {
       "nome": "Mauro Gil",
       "matricula": "110334562",
-      "email": "mauro@uezohub.com",
+      "email": "maurogil@uezohub.com",
       "senha": "1234567",
       "id": 2
     }

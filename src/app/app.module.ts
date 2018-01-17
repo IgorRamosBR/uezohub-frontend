@@ -7,6 +7,7 @@ import { PainelCoordenadorComponent } from './coordenador/painel-coordenador/pai
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import {ToastyModule} from 'ng2-toasty';
 
 import { AppComponent } from './app.component';
 
@@ -31,6 +32,7 @@ import { DisciplinaService } from './disciplina/disciplina.service';
     HttpModule,
 
     MatToolbarModule,
+    ToastyModule.forRoot(),
 
     AppRoutingModule,
     AlunoModule,
