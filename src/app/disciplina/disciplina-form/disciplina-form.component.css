@@ -1,33 +1,3 @@
-.botao {
-    color: #fff;
-    font-family: 'Poppins Bold', 'Poppins Regular', 'Poppins';
-}
-  
-.filtro-header {
-    min-height: 64px;
-    padding: 8px 24px 0;
-  }
-  
-.mat-table {
-  overflow: auto;
-  max-height: 560px;
-  font-family: 'Poppins Bold', 'Poppins Regular', 'Poppins';
-  font-size: 10px;
-}
-
-.mat-cell {
-  font-family: 'Poppins Bold', 'Poppins Regular', 'Poppins';
-}
-
-.mat-header-cell {
-  font-weight: 700;
-  color: #606060;
-}
-
-.mat-header-cell.mat-sort-header-sorted {
-  color: black;
-}
-
 .mat-column-codigo,
 .mat-column-professor,
 .mat-column-ativo {
