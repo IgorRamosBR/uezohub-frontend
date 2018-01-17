@@ -110,7 +110,14 @@
       "nome": "Fred",
       "email": "fred@uezohub.com",
       "senha": "123456",
-      "matricula": "121555648"
+      "matricula": "1215556481"
+    },
+    {
+      "nome": "Mauro Gil",
+      "matricula": "110334562",
+      "email": "mauro@uezohub.com",
+      "senha": "1234567",
+      "id": 2
     }
   ]
 }

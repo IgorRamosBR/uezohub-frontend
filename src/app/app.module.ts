@@ -1,3 +1,4 @@
+import { ProfessorService } from './professor/professor.service';
 import { CursoService } from './cursos/curso.service';
 import { CursosModule } from './cursos/cursos.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -40,7 +41,7 @@ import { DisciplinaService } from './disciplina/disciplina.service';
     IndexModule,
     SharedModule
   ],
-  providers: [CursoService, DisciplinaService],
+  providers: [CursoService, DisciplinaService, ProfessorService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
