@@ -103,5 +103,14 @@
       "ativo": false,
       "id": 8
     }
+  ],
+  "professor": [
+    {
+      "id": 1,
+      "nome": "Fred",
+      "email": "fred@uezohub.com",
+      "senha": "123456",
+      "matricula": "121555648"
+    }
   ]
 }

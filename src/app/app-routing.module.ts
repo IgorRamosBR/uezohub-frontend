@@ -1,3 +1,4 @@
+import { ProfessorFormComponent } from './professor/professor-form/professor-form.component';
 import { DisciplinaFormComponent } from './disciplina/disciplina-form/disciplina-form.component';
 import { PainelCoordenadorComponent } from './coordenador/painel-coordenador/painel-coordenador.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -8,6 +9,7 @@ const rotas: Routes = [
     {path: 'painel-coordenador', component: PainelCoordenadorComponent},
     {path: 'cursos', component: CursoComponent},
     {path: 'disciplinas', component: DisciplinaFormComponent},
+    {path: 'professor', component: ProfessorFormComponent},
     {path: '**', redirectTo: 'painel-coordenador'}
   ];
 

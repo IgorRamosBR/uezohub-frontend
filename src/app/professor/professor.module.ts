@@ -3,6 +3,7 @@ import { MatInputModule, MatSortModule, MatTableModule, MatToolbarModule } from 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PainelProfessorComponent } from './painel-professor/painel-professor.component';
+import { ProfessorFormComponent } from './professor-form/professor-form.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { PainelProfessorComponent } from './painel-professor/painel-professor.co
     MatInputModule
   ],
   declarations: [
-    PainelProfessorComponent
+    PainelProfessorComponent,
+    ProfessorFormComponent
   ],
   exports: [
     PainelProfessorComponent
