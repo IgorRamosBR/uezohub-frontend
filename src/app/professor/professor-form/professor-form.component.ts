@@ -1,3 +1,4 @@
+import { ErrorHandlerService } from './../../core/error-handler.service';
 import { ToastyService } from 'ng2-toasty';
 import { ProfessorService } from './../professor.service';
 import { FormGroupDirective } from '@angular/forms';
@@ -22,7 +23,8 @@ export class ProfessorFormComponent implements OnInit {
   constructor(
     private professorService: ProfessorService,
     private changeDetectorRefs: ChangeDetectorRef,
-    private toasty: ToastyService
+    private toasty: ToastyService,
+    private errorHandlerService: ErrorHandlerService
   ) { }
 
   ngOnInit() {
@@ -41,13 +43,15 @@ export class ProfessorFormComponent implements OnInit {
         .then(() => {
           this.buscarTodosOsProfessores();
           this.toasty.success('Professor atualizado com sucesso.');
-        });
+        })
+        .catch(error => this.errorHandlerService.handle(error));
     } else {
       this.professorService.salvar(this.professor)
         .then(() => {
           this.buscarTodosOsProfessores();
           this.toasty.success('Professor salvo com sucesso.');
-        });
+        })
+        .catch(error => this.errorHandlerService.handle(error));
     }
     this.dataSource.connect();
     this.novo(f);
@@ -78,7 +82,8 @@ export class ProfessorFormComponent implements OnInit {
         this.dataSource = new MatTableDataSource(professores);
         this.dataSource.sort = this.sort;
         this.changeDetectorRefs.detectChanges();
-      });
+      })
+      .catch(error => this.errorHandlerService.handle(error));
   }
 
 }

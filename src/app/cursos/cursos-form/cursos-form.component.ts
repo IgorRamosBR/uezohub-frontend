@@ -1,3 +1,4 @@
+import { ErrorHandlerService } from './../../core/error-handler.service';
 import { Component, ViewChild, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormGroupDirective } from '@angular/forms';
 
@@ -26,7 +27,8 @@ export class CursosFormComponent implements OnInit {
 
   constructor(private cursoService: CursoService,
               private changeDetectorRefs: ChangeDetectorRef,
-              private toasty: ToastyService) {}
+              private toasty: ToastyService,
+              private errorHandlerService: ErrorHandlerService) {}
 
   ngOnInit(): void {
     this.buscarTodosOsCursos();
@@ -44,13 +46,15 @@ export class CursosFormComponent implements OnInit {
         .then(() => {
           this.buscarTodosOsCursos();
           this.toasty.success('Curso atualizado com sucesso.');
-        });
+        })
+        .catch(error => this.errorHandlerService.handle(error));
     } else {
       this.cursoService.salvar(this.curso)
         .then(() => {
           this.buscarTodosOsCursos();
           this.toasty.success('Curso salvo com sucesso.');
-        });
+        })
+        .catch(error => this.errorHandlerService.handle(error));
     }
     this.dataSource.connect();
     if (f) {
@@ -64,7 +68,9 @@ export class CursosFormComponent implements OnInit {
       .then(cursos => {
         this.dataSource = new MatTableDataSource(cursos);
         this.dataSource.sort = this.sort;
-        this.changeDetectorRefs.detectChanges(); });
+        this.changeDetectorRefs.detectChanges();
+      })
+      .catch(error => this.errorHandlerService.handle(error));
   }
 
   editar(curso: Curso) {

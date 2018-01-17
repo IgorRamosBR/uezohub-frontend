@@ -1,10 +1,13 @@
-import { DisciplinaService } from './../disciplina.service';
+import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { FormGroupDirective } from '@angular/forms';
 import { MatTableDataSource, MatSort } from '@angular/material';
+
+import { ToastyService } from 'ng2-toasty';
+
+import { DisciplinaService } from './../disciplina.service';
 import { CursoService } from './../../cursos/curso.service';
 import { Disciplina } from './../disciplina';
-import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
-import { ToastyService } from 'ng2-toasty';
+import { ErrorHandlerService } from '../../core/error-handler.service';
 
 
 @Component({
@@ -27,7 +30,8 @@ export class DisciplinaFormComponent implements OnInit {
     private cursoService: CursoService,
     private disciplinaService: DisciplinaService,
     private changeDetectorRefs: ChangeDetectorRef,
-    private toasty: ToastyService
+    private toasty: ToastyService,
+    private errorHandlerService: ErrorHandlerService
   ) { }
 
   ngOnInit() {
@@ -48,13 +52,15 @@ export class DisciplinaFormComponent implements OnInit {
         .then(() => {
           this.buscarTodasAsDisciplinas();
           this.toasty.success('Disciplina atualizada com sucesso.');
-        });
+        })
+        .catch(error => this.errorHandlerService.handle(error));
     } else {
       this.disciplinaService.salvar(this.disciplina)
         .then(() => {
           this.buscarTodasAsDisciplinas();
           this.toasty.success('Disciplina salva com sucesso.');
-        });
+        })
+        .catch(error => this.errorHandlerService.handle(error));
     }
     this.dataSource.connect();
     if (f) {
@@ -88,7 +94,8 @@ export class DisciplinaFormComponent implements OnInit {
         this.dataSource = new MatTableDataSource(disciplinas);
         this.dataSource.sort = this.sort;
         this.changeDetectorRefs.detectChanges();
-      });
+      })
+      .catch(error => this.errorHandlerService.handle(error));
   }
 
   carregaCursos() {

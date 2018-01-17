@@ -1,3 +1,4 @@
+import { CoreModule } from './core/core.module';
 import { ProfessorService } from './professor/professor.service';
 import { CursoService } from './cursos/curso.service';
 import { CursosModule } from './cursos/cursos.module';
@@ -41,7 +42,8 @@ import { DisciplinaService } from './disciplina/disciplina.service';
     CursosModule,
     DisciplinaModule,
     IndexModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ],
   providers: [CursoService, DisciplinaService, ProfessorService],
   bootstrap: [AppComponent]
