@@ -28,13 +28,18 @@ body {
 
 .painel {
     position: fixed;
-    width: 1024px;
+    width: 1280px;
     left: 310px;
     top: 64px;
 }
 
 .espacamento-container {
     padding: 20px;
+}
+
+.campo-full-width {
+    width: 100%;
+    padding-bottom: 10px;
 }
 
 /* NAVEGACAO */

@@ -14,7 +14,6 @@ import { CursoService } from './../curso.service';
 })
 export class CursosFormComponent implements OnInit {
 
-  ativo = true;
   colunas = ['nome', 'ativo', 'id'];
 
   curso = new Curso();
@@ -45,12 +44,11 @@ export class CursosFormComponent implements OnInit {
       this.cursoService.salvar(this.curso)
         .then(() => this.buscarTodosOsCursos());
     }
-    console.log('passei aqui');
     this.dataSource.connect();
-    if (f)
+    if (f) {
       f.resetForm();
+    }
     this.curso = new Curso();
-    this.ativo = true;
   }
 
   buscarTodosOsCursos() {
@@ -62,13 +60,11 @@ export class CursosFormComponent implements OnInit {
   }
 
   editar(curso: Curso) {
-    console.log(curso);
     this.curso = curso;
   }
 
   novo() {
     this.curso = new Curso();
-    this.ativo = true;
   }
 
   getColor(ativo: boolean) {

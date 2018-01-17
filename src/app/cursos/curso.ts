@@ -3,8 +3,6 @@ export class Curso {
     nome: string;
     ativo: boolean;
 
-    constructor () {
-        this.ativo = false;
-    }
+
    
 }

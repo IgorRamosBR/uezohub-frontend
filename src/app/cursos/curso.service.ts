@@ -19,6 +19,9 @@ export class CursoService {
     }
 
     salvar(curso: Curso): Promise<any> {
+      if (curso.ativo === undefined) {
+        curso.ativo = false;
+      }
       return this.http.post(this.cursoUrl, curso)
       .toPromise()
       .then(response => response.json());
