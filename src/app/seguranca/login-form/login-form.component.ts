@@ -1,3 +1,4 @@
+import { AuthService } from './../auth.service';
 import { FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -18,14 +19,13 @@ export class LoginFormComponent implements OnInit {
     Validators.required
   ]);
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
   }
 
   login(email: string, senha: string) {
-    console.log(email);
-    console.log(senha);
+    this.auth.login(email, senha);
   }
 
 }
