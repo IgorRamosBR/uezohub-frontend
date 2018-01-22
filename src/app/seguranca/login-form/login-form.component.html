@@ -13,7 +13,7 @@
               <small style="float:left; padding-left: 16px;">Mínimo 6 caracteres</small>
             </div>
           </div>
-          <button type="button" mat-raised-button class="btn rounded-btn" (click)="login(email.value, senha.value)" [disabled]="!f.valid"> Log in </button>
+          <button type="button" mat-raised-button class="btn rounded-btn" (click)="login(email.value, senha.value); senha.value='';" [disabled]="!f.valid"> Log in </button>
         </form>
       </div>
     </div>

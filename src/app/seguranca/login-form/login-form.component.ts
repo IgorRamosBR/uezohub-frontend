@@ -1,6 +1,8 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../auth.service';
 import { FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { ErrorHandlerService } from '../../core/error-handler.service';
 
 @Component({
   selector: 'app-login-form',
@@ -9,23 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginFormComponent implements OnInit {
 
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email
-  ]);
-
-  senhaFormControl = new FormControl('', [
-    Validators.minLength(6),
-    Validators.required
-  ]);
-
-  constructor(private auth: AuthService) { }
+  constructor(
+    private auth: AuthService,
+    private errorHandler: ErrorHandlerService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
 
   login(email: string, senha: string) {
-    this.auth.login(email, senha);
+    this.auth.login(email, senha)
+      .then(() => {
+        this.router.navigate(['/painel-coordenador']);
+      })
+      .catch(erro => {
+        this.errorHandler.handle(erro);
+      });
   }
 
 }
