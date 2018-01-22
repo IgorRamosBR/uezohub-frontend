@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 
 import { ToastyModule } from 'ng2-toasty';
 import { MatToolbarModule } from '@angular/material';
+import { JwtHelper } from 'angular2-jwt';
 
 import { ProfessorService } from './professor/professor.service';
 import { CursoService } from './cursos/curso.service';
@@ -52,7 +53,9 @@ import { SegurancaModule } from './seguranca/seguranca.module';
     CursoService,
     DisciplinaService,
     ProfessorService,
-    AuthService
+    AuthService,
+
+    JwtHelper
   ],
   bootstrap: [AppComponent]
 })
