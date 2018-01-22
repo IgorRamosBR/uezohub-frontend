@@ -4,8 +4,10 @@ import { PainelCoordenadorComponent } from './coordenador/painel-coordenador/pai
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CursoComponent } from './cursos/curso/curso.component';
+import { IndexComponent } from './index/index.component';
 
 const rotas: Routes = [
+    {path: 'index', component: IndexComponent},
     {path: 'painel-coordenador', component: PainelCoordenadorComponent},
     {path: 'cursos', component: CursoComponent},
     {path: 'disciplinas', component: DisciplinaFormComponent},
