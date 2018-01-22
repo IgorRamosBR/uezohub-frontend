@@ -1,0 +1,45 @@
+<!--<div class="login-page animate">
+  <div class="row" style="justify-content: center;">
+    <div class="col-lg-4 col-lg-offset-4">
+      <img src="assets/images/flat-avatar.png" class="user-avatar" />
+      <h1>Uezohub</h1>
+      <form role="form">
+        <div class="form-content">
+          <div class="form-group">
+            <input type="email" placeholder="E-mail" class="form-control input-underline input-lg" [formControl]="emailFormControl" required maxlength="60">
+            <mat-error *ngIf="emailFormControl.hasError('email') && emailFormControl.dirty">
+              Entre com um E-mail válido.
+            </mat-error>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control input-underline input-lg" [formControl]="senhaFormControl" placeholder="Password" required >
+            <mat-error *ngIf="senhaFormControl.errors?.minlenght  && senhaFormControl.dirty">
+              Minimo 8 dígitos.
+            </mat-error>
+          </div>
+        </div>
+        <a class="btn rounded-btn" (click)="login(emailFormControl.value, senhaFormControl.value)"> Log in </a>
+      </form>
+    </div>
+  </div>
+</div>-->
+<div class="login-page animate">
+    <div class="row" style="justify-content: center;">
+      <div class="col-lg-4 col-lg-offset-4">
+        <img src="assets/images/flat-avatar.png" class="user-avatar" />
+        <h1>Uezohub</h1>
+        <form role="form" #f="ngForm">
+          <div class="form-content">
+            <div class="form-group">
+              <input type="email" placeholder="E-mail" class="form-control input-underline input-lg" required maxlength="60" name=email ngModel #email>
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control input-underline input-lg" placeholder="Password" required minlength="6" name=senha ngModel #senha>
+              <small style="float:left; padding-left: 16px;">Mínimo 6 caracteres</small>
+            </div>
+          </div>
+          <button type="button" mat-raised-button class="btn rounded-btn" (click)="login(email.value, senha.value)" [disabled]="!f.valid"> Log in </button>
+        </form>
+      </div>
+    </div>
+  </div>

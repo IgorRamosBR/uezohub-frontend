@@ -21,6 +21,7 @@ import { MatToolbarModule } from '@angular/material';
 import { HttpModule } from '@angular/http';
 import { DisciplinaModule } from './disciplina/disciplina.module';
 import { DisciplinaService } from './disciplina/disciplina.service';
+import { SegurancaModule } from './seguranca/seguranca.module';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { DisciplinaService } from './disciplina/disciplina.service';
     CoordenadorModule,
     CursosModule,
     DisciplinaModule,
+    SegurancaModule,
     IndexModule,
     SharedModule,
     CoreModule

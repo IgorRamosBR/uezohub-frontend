@@ -20,7 +20,7 @@ export class AppComponent {
   }
 
   exibindoNavegacao() {
-    return this.router.url !== '/index';
+    return this.router.url !== '/login';
   }
 
 }
