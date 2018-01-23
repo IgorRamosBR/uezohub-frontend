@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PainelCoordenadorComponent } from './painel-coordenador/painel-coordenador.component';
 import { FormsModule } from '@angular/forms';
+import { CoordenadorFormComponent } from './coordenador-form/coordenador-form.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
   ],
   declarations: [
     PainelCoordenadorComponent,
+    CoordenadorFormComponent,
   ],
   exports: [
     PainelCoordenadorComponent

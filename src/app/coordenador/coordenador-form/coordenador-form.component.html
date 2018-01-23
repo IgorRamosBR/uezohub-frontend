@@ -1,0 +1,100 @@
+<div class="espacamento-container">
+  <form autocomplete="off" #f="ngForm" (ngSubmit)="salvar(f)"> 
+    <h3 class="texto-secundario"> {{ coordenador.id ? 'Atualizar' : 'Novo'}} Coordenador </h3>
+    <hr>
+
+    <div class="row">
+      <div class="col-md-12">
+        <mat-form-field class="campo-full-width">
+          <input matInput placeholder="Nome do coordenador" name="name" [(ngModel)]="coordenador.nome" #name="ngModel" required minlength="2"
+            maxlength="30">
+          <mat-error *ngIf="name.hasError('maxlength') && (name.dirty || isSubmitted)">
+            Entre com um Nome válido.
+          </mat-error>
+          <mat-error *ngIf="name.hasError('required') && name.dirty">
+            Nome é obrigatório
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <!--
+      <div class="col-md-4">
+        <mat-form-field class="campo-full-width">
+          <input matInput placeholder="Matrícula" name="matricula" [(ngModel)]="coordenador.matricula" #matricula="ngModel" minlength="2"
+            maxlength="20">
+        </mat-form-field>
+
+      </div>
+    -->
+      <div class="col-md-6">
+        <mat-form-field class="campo-full-width">
+          <input matInput placeholder="E-mail" type="email" [email]="true" name="email" [(ngModel)]="coordenador.email" #email="ngModel" required  maxlength="60"> 
+          <mat-error *ngIf="email.hasError('email') && (email.dirty || isSubmitted)">
+            Entre com um E-mail válido.
+          </mat-error>
+          <mat-error *ngIf="email.hasError('required') && email.dirty">
+            E-mail é obrigatório
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="campo-full-width">
+          <input matInput placeholder="Senha" type="password" name="senha" [(ngModel)]="coordenador.senha" #senha="ngModel" required minlength="2"
+            maxlength="20">
+          <mat-error *ngIf="senha.hasError('maxlength') && (senha.dirty || isSubmitted)">
+            Entre com uma senha válida.
+          </mat-error>
+          <mat-error *ngIf="senha.hasError('required') && senha.dirty">
+            Senha é obrigatória
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <button mat-raised-button type="submit" color="primary" class="botao" [disabled]="f.invalid">Salvar</button>
+    <button mat-raised-button type="button" color="primary" class="botao" (click)="novo(f)">Novo</button>
+  </form>
+
+  <div class="mat-elevation-z8" style="margin-top: 30px;">
+
+      <div class="filtro-header">
+          <mat-form-field [style.width]="'100%'">
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+          </mat-form-field>
+      </div>
+
+      <mat-table #table [dataSource]="dataSource" matSort>
+
+          <!-- Nome Column -->
+          <ng-container matColumnDef="nome">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> coordenador </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
+          </ng-container>
+
+          <!-- Matrícula Column 
+          <ng-container matColumnDef="matricula">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Matrícula </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.matricula}} </mat-cell>
+          </ng-container>-->
+
+          <!-- Email Column -->
+          <ng-container matColumnDef="email">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> E-mail </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+          </ng-container>
+
+          <!-- Ações Column 
+          <ng-container matColumnDef="id">
+              <mat-header-cell *matHeaderCellDef style="text-align:center"> Ações </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                  <div style="text-align:center">
+                      <button mat-button color="primary" style="margin:0 auto" [style.color]="getColor(true)" (click)="editar(element)">Editar</button>
+                  </div>
+              </mat-cell>
+          </ng-container>-->
+
+          <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: colunas;">
+          </mat-row>
+      </mat-table>
+  </div>
+</div>

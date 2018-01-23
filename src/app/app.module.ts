@@ -24,6 +24,7 @@ import { AlunoModule } from './aluno/aluno.module';
 import { DisciplinaModule } from './disciplina/disciplina.module';
 import { DisciplinaService } from './disciplina/disciplina.service';
 import { SegurancaModule } from './seguranca/seguranca.module';
+import { CoordenadorService } from './coordenador/coordenador.service';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { SegurancaModule } from './seguranca/seguranca.module';
     CursoService,
     DisciplinaService,
     ProfessorService,
+    CoordenadorService,
     AuthService,
 
     JwtHelper
