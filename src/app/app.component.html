@@ -24,16 +24,18 @@
         <li class="sidenav-itens" routerLinkActive="ativo">
             <a routerLink="/painel-coordenador">Home</a>
         </li>
-        <li class="sidenav-itens" routerLinkActive="ativo">
+        <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('COORDENADOR')">
             <a routerLink="/cursos">Cursos</a>
         </li>
-        <li class="sidenav-itens" routerLinkActive="ativo">
+        <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('COORDENADOR')">
             <a routerLink="/disciplinas">Disciplinas</a>
         </li>
-        <li class="sidenav-itens" routerLinkActive="ativo">
+        <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('COORDENADOR')">
             <a routerLink="/professor">Professores</a>
         </li>
-        <li class="sidenav-itens" routerLinkActive="ativo">Coordenadores</li>
+        <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('COORDENADOR')">
+            Coordenadores
+        </li>
     </ul>
 </div>
 
