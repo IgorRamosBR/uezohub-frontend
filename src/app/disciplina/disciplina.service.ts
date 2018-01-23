@@ -1,16 +1,17 @@
-import { Disciplina } from './disciplina';
-import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 
+import { AuthHttp } from 'angular2-jwt';
 import 'rxjs/add/operator/toPromise';
+
+import { Disciplina } from './disciplina';
 
 @Injectable()
 export class DisciplinaService {
 
   disciplinaUrl = environment.API_BASE_URL + '/disciplina';
 
-  constructor(private http: Http) { }
+  constructor(private http: AuthHttp) { }
 
   buscarTodos(): Promise<any> {
     return this.http.get(this.disciplinaUrl)

@@ -1,16 +1,18 @@
-import { Curso } from './curso';
-import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
+
+import { AuthHttp } from 'angular2-jwt';
+
+import { Curso } from './curso';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class CursoService {
 
-  cursoUrl = environment.API_BASE_URL + '/cursos';
+  cursoUrl = environment.API_BASE_URL + '/curso';
 
-  constructor(private http: Http) { }
+  constructor(private http: AuthHttp) { }
 
   buscarTodos(): Promise<any> {
     return this.http.get(this.cursoUrl)

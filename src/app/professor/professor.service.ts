@@ -1,7 +1,9 @@
-import { Professor } from './professor';
-import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
+
+import { AuthHttp } from 'angular2-jwt';
+
+import { Professor } from './professor';
 
 @Injectable()
 export class ProfessorService {
@@ -9,7 +11,7 @@ export class ProfessorService {
   professorUrl = environment.API_BASE_URL + '/professor';
 
   constructor(
-    private http: Http
+    private http: AuthHttp
   ) { }
 
   buscarTodos(): Promise<any> {
