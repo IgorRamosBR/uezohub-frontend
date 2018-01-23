@@ -3,6 +3,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AtivoConversorPipe } from './ativo-conversor.pipe';
+import { PrimeiroNomePipe } from './primeiro-nome.pipe';
 
 @NgModule({
   imports: [
@@ -11,11 +12,13 @@ import { AtivoConversorPipe } from './ativo-conversor.pipe';
   ],
   declarations: [
     ToolbarComponent,
-    AtivoConversorPipe
+    AtivoConversorPipe,
+    PrimeiroNomePipe
   ],
   exports: [
     ToolbarComponent,
-    AtivoConversorPipe
+    AtivoConversorPipe,
+    PrimeiroNomePipe
   ]
 })
 export class SharedModule { }

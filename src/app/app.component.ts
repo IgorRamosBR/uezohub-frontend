@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { ToastyConfig } from 'ng2-toasty';
 import { Router } from '@angular/router';
+
+import { AuthService } from './seguranca/auth.service';
+import { ToastyConfig } from 'ng2-toasty';
 
 
 @Component({
@@ -14,7 +16,8 @@ export class AppComponent {
 
   constructor(
     private toastyConfig: ToastyConfig,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) {
     this.toastyConfig.theme = 'bootstrap';
   }
