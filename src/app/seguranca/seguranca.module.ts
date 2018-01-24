@@ -9,6 +9,7 @@ import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { UezohubHttp } from './uezohub-http';
 import { AuthService } from './auth.service';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { AuthGuard } from './auth.guard';
 
 
 
@@ -36,7 +37,8 @@ export function authHttpServiceFacotory(auth: AuthService, http: Http, options: 
       provide: AuthHttp,
       useFactory: authHttpServiceFacotory,
       deps: [AuthService, Http, RequestOptions]
-    }
+    },
+    AuthGuard
   ]
 })
 export class SegurancaModule { }
