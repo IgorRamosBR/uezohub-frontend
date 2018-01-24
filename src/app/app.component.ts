@@ -1,3 +1,5 @@
+import { ErrorHandlerService } from './core/error-handler.service';
+import { LogoutService } from './seguranca/logout.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -17,7 +19,9 @@ export class AppComponent {
   constructor(
     private toastyConfig: ToastyConfig,
     private router: Router,
-    private auth: AuthService
+    private errorHandler: ErrorHandlerService,
+    private auth: AuthService,
+    private logoutService: LogoutService
   ) {
     this.toastyConfig.theme = 'bootstrap';
   }
@@ -25,5 +29,14 @@ export class AppComponent {
   exibindoNavegacao() {
     return this.router.url !== '/login';
   }
+
+  logout() {
+    this.logoutService.logout()
+      .then(() => {
+        this.router.navigate(['/login']);
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
+
 
 }

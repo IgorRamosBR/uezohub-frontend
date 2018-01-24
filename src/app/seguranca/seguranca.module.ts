@@ -10,6 +10,7 @@ import { UezohubHttp } from './uezohub-http';
 import { AuthService } from './auth.service';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { AuthGuard } from './auth.guard';
+import { LogoutService } from './logout.service';
 
 
 
@@ -38,7 +39,8 @@ export function authHttpServiceFacotory(auth: AuthService, http: Http, options: 
       useFactory: authHttpServiceFacotory,
       deps: [AuthService, Http, RequestOptions]
     },
-    AuthGuard
+    AuthGuard,
+    LogoutService
   ]
 })
 export class SegurancaModule { }

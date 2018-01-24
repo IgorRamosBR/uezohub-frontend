@@ -47,6 +47,5 @@ export class ErrorHandlerService {
 
     this.toasty.error(msg);
   }
-  }
 
 }
