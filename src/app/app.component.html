@@ -25,6 +25,9 @@
             <a routerLink="/painel-coordenador">Home</a>
         </li>
         <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('COORDENADOR')">
+            <a routerLink="/aluno">Alunos</a>
+        </li>
+        <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('COORDENADOR')">
             <a routerLink="/cursos">Cursos</a>
         </li>
         <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('COORDENADOR')">
@@ -32,9 +35,6 @@
         </li>
         <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('COORDENADOR')">
             <a routerLink="/professor">Professores</a>
-        </li>
-        <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('COORDENADOR')">
-            <a routerLink="/aluno">Alunos</a>
         </li>
         <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('COORDENADOR')">
             <a routerLink="/coordenador">Coordenadores</a>
