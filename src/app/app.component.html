@@ -34,6 +34,9 @@
             <a routerLink="/professor">Professores</a>
         </li>
         <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('COORDENADOR')">
+            <a routerLink="/aluno">Alunos</a>
+        </li>
+        <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('COORDENADOR')">
             <a routerLink="/coordenador">Coordenadores</a>
         </li>
     </ul>

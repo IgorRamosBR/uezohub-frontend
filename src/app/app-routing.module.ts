@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { CursoComponent } from './cursos/curso/curso.component';
 import { IndexComponent } from './index/index.component';
 import { CoordenadorFormComponent } from './coordenador/coordenador-form/coordenador-form.component';
+import { AlunoFormComponent } from './aluno/aluno-form/aluno-form.component';
 
 const rotas: Routes = [
     {path: 'index', component: IndexComponent},
@@ -16,6 +17,7 @@ const rotas: Routes = [
     {path: 'disciplinas', component: DisciplinaFormComponent},
     {path: 'professor', component: ProfessorFormComponent},
     {path: 'coordenador', component: CoordenadorFormComponent},
+    {path: 'aluno', component: AlunoFormComponent},
     {path: '**', redirectTo: 'painel-coordenador'}
   ];
 

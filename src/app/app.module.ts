@@ -1,3 +1,4 @@
+import { AlunoService } from './aluno/aluno.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -55,6 +56,7 @@ import { CoordenadorService } from './coordenador/coordenador.service';
     DisciplinaService,
     ProfessorService,
     CoordenadorService,
+    AlunoService,
     AuthService,
 
     JwtHelper
