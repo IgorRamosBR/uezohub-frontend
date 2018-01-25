@@ -1,3 +1,4 @@
+import { ConteudoService } from './conteudo/conteudo.service';
 import { AlunoService } from './aluno/aluno.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,6 +27,7 @@ import { DisciplinaModule } from './disciplina/disciplina.module';
 import { DisciplinaService } from './disciplina/disciplina.service';
 import { SegurancaModule } from './seguranca/seguranca.module';
 import { CoordenadorService } from './coordenador/coordenador.service';
+import { ConteudoModule } from './conteudo/conteudo.module';
 
 
 @NgModule({
@@ -46,6 +48,7 @@ import { CoordenadorService } from './coordenador/coordenador.service';
     CoordenadorModule,
     CursosModule,
     DisciplinaModule,
+    ConteudoModule,
     SegurancaModule,
     IndexModule,
     SharedModule,
@@ -58,6 +61,7 @@ import { CoordenadorService } from './coordenador/coordenador.service';
     CoordenadorService,
     AlunoService,
     AuthService,
+    ConteudoService,
 
     JwtHelper
   ],

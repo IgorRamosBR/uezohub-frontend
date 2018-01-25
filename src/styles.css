@@ -43,8 +43,8 @@ body {
 }
 
 .botao {
-    color: #fff;
-    font-family: 'Poppins Bold', 'Poppins Regular', 'Poppins';
+    color: #fff!important;
+    font-family: 'Poppins Bold', 'Poppins Regular', 'Poppins'!important;
 }
 
 /* NAVEGACAO */
