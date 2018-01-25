@@ -23,7 +23,13 @@ export class LoginFormComponent implements OnInit {
   login(email: string, senha: string) {
     this.auth.login(email, senha)
       .then(() => {
-        this.router.navigate(['/painel-coordenador']);
+        if(this.auth.temPermissao('COORDENADOR')) {
+          this.router.navigate(['/painel-coordenador']);
+        } else if (this.auth.temPermissao('PROFESSOR')) {
+          this.router.navigate(['/painel-professor']);
+        } else if (this.auth.temPermissao('ALUNO')) {
+          this.router.navigate(['/painel-aluno']);
+        }
       })
       .catch(erro => {
         this.errorHandler.handle(erro);

@@ -10,6 +10,7 @@ import { IndexComponent } from './index/index.component';
 import { CoordenadorFormComponent } from './coordenador/coordenador-form/coordenador-form.component';
 import { AlunoFormComponent } from './aluno/aluno-form/aluno-form.component';
 import { AuthGuard } from './seguranca/auth.guard';
+import { PainelProfessorComponent } from './professor/painel-professor/painel-professor.component';
 
 const rotas: Routes = [
     {path: 'index', component: IndexComponent},
@@ -19,6 +20,12 @@ const rotas: Routes = [
       component: PainelCoordenadorComponent,
       canActivate: [AuthGuard],
       data: { roles: ['COORDENADOR'] }
+    },
+    {
+      path: 'painel-professor', 
+      component: PainelProfessorComponent,
+      canActivate: [AuthGuard],
+      data: { roles: ['PROFESSOR'] }
     },
     {
       path: 'cursos', 
