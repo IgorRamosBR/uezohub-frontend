@@ -1,5 +1,6 @@
-<mat-accordion class="upload-form">
-  <mat-expansion-panel>
+<mat-accordion class="upload-form mat-elevation-z8">
+  <mat-expansion-panel [expanded]="true"
+  >
     <mat-expansion-panel-header>
       <mat-panel-title>
         Novo Upload
@@ -8,25 +9,26 @@
         Escolha a disciplina e o curso
       </mat-panel-description>
     </mat-expansion-panel-header>
-
+    <form #f=ngForm>
     <mat-form-field>
-        <mat-select placeholder="Selecione o Curso">
-            <mat-option *ngFor="let food of foods" [value]="food.value">
-              {{ food.viewValue }}
+        <mat-select placeholder="Selecione o Curso" name="curso" [(ngModel)]="conteudo.disciplina.curso.id" required>
+            <mat-option *ngFor="let curso of cursos" [value]="curso.value">
+              {{ curso.viewValue }}
             </mat-option>
           </mat-select>
     </mat-form-field>
 
     <mat-form-field>
-        <mat-select placeholder="Selecione a Disciplina">
-            <mat-option *ngFor="let food of foods" [value]="food.value">
-              {{ food.viewValue }}
+        <mat-select placeholder="Selecione a Disciplina" name="disciplina" [(ngModel)]="conteudo.disciplina.id" required>
+            <mat-option *ngFor="let disciplina of disciplinas" [value]="disciplina.value">
+              {{ disciplina.viewValue }}
             </mat-option>
           </mat-select>
     </mat-form-field>
     <br>
-    <button mat-raised-button type="button" color="primary" class="botao">Upload</button>
-    <input type="file" name="file" id="file" class="inputfile" />
-    <label for="file">Choose a file</label>
+    <button mat-raised-button type="button" color="primary" class="botao" [disabled]="f.invalid" >Upload</button>
+    <input type="file" name="file" id="file" class="inputfile" (change)="upload($event)"/>
+    <label for="file"> Selecione o Arquivo</label><span class="texto-secundario">{{nome}}</span>
+  </form>
   </mat-expansion-panel>
 </mat-accordion>
