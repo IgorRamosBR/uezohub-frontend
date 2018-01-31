@@ -11,16 +11,19 @@ import { AuthService } from './auth.service';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { AuthGuard } from './auth.guard';
 import { LogoutService } from './logout.service';
+import { UezohubHttpFormData } from './uezohub-http-form-data';
 
-
-
-export function authHttpServiceFacotory(auth: AuthService, http: Http, options: RequestOptions) {
+export function authHttpServiceFactory(auth: AuthService, http: Http, options: RequestOptions) {
   const config = new AuthConfig({
     globalHeaders: [
       { 'Content-Type': 'application/json' }
     ]
   });
   return new UezohubHttp(auth, config, http, options);
+}
+
+export function authFormDataHttpServiceFactory(auth: AuthService, http: Http, options: RequestOptions) {
+  return new UezohubHttp(auth, new AuthConfig(), http, options);
 }
 
 @NgModule({
@@ -36,7 +39,12 @@ export function authHttpServiceFacotory(auth: AuthService, http: Http, options: 
   providers: [
     {
       provide: AuthHttp,
-      useFactory: authHttpServiceFacotory,
+      useFactory: authHttpServiceFactory,
+      deps: [AuthService, Http, RequestOptions]
+    },
+    {
+      provide: UezohubHttpFormData,
+      useFactory: authFormDataHttpServiceFactory,
       deps: [AuthService, Http, RequestOptions]
     },
     AuthGuard,

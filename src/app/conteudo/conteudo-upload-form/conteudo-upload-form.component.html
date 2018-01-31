@@ -9,7 +9,7 @@
         Escolha a disciplina e o curso
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <form #f=ngForm>
+    <form #f=ngForm (ngSubmit)="upload()">
     <mat-form-field>
         <mat-select placeholder="Selecione o Curso" name="curso" [(ngModel)]="conteudo.disciplina.curso.id" required>
             <mat-option *ngFor="let curso of cursos" [value]="curso.value">
@@ -26,9 +26,9 @@
           </mat-select>
     </mat-form-field>
     <br>
-    <button mat-raised-button type="button" color="primary" class="botao" [disabled]="f.invalid" >Upload</button>
-    <input type="file" name="file" id="file" class="inputfile" (change)="upload($event)"/>
-    <label for="file"> Selecione o Arquivo</label><span class="texto-secundario">{{nome}}</span>
+    <button mat-raised-button type="submit" color="primary" class="botao" [disabled]="validaUpload(f)" >Upload</button>
+    <input type="file" name="file" id="file" class="inputfile" (change)="carregaArquivo($event)"/>
+    <label for="file"> Selecione o Arquivo</label><span class="texto-secundario">{{nomeDoArquivo}}</span>
   </form>
   </mat-expansion-panel>
 </mat-accordion>

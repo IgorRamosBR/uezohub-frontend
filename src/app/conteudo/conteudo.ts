@@ -1,4 +1,5 @@
 import { Disciplina } from "../disciplina/disciplina";
+import { Usuario } from "../seguranca/usuario";
 
 export class Conteudo {
     id: number;
@@ -7,8 +8,10 @@ export class Conteudo {
     extensao: string;
     link: string;
     disciplina: Disciplina;
+    usuario: Usuario;
 
     constructor () {
         this.disciplina = new Disciplina();
+        this.usuario = new Usuario();
     }
 }
