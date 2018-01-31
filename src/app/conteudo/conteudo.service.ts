@@ -2,7 +2,6 @@ import { UezohubHttpFormData } from './../seguranca/uezohub-http-form-data';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Conteudo } from './conteudo';
-import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../seguranca/auth.service';
 import { HttpRequest } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
@@ -14,7 +13,6 @@ export class ConteudoService {
 
   constructor(
     private http: UezohubHttpFormData,
-    private httpClient: HttpClient,
     private authService: AuthService
   ) { }
 
