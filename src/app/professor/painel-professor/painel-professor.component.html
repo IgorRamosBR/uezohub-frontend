@@ -11,7 +11,7 @@
   <hr>
 </div>
 <div class="container">
-    <app-conteudo-upload-form></app-conteudo-upload-form>
+  <app-conteudo-upload-form (uploadConcluido)="aoUpload()"></app-conteudo-upload-form> 
   <div class="row">
     <div class="col-md-8">
       <nav aria-label="breadcrumb" *ngIf="tabelaDisciplinas">
@@ -24,7 +24,7 @@
           <li class="breadcrumb-item" aria-current="page">
             <a href="javascript:;" (click)="todasAsDisciplinas()">Todas as Disciplinas</a>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">Estrutura de Dados</li>
+          <li class="breadcrumb-item active" aria-current="page">{{nomeDisciplinaSelecionada}}</li>
         </ol>
       </nav>
     </div>
@@ -39,7 +39,7 @@
     </div>
   </div>
 
-  <div class="mat-elevation-z8">
+  <div class="mat-elevation-z8" *ngIf="tabelaDisciplinas">
 
     <div class="filtro-header">
       <mat-form-field [style.width]="'100%'">
@@ -76,9 +76,8 @@
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: colunas;" [ngClass]="{'highlight-row': linhaSelecionada == row.id}" (click)="linhaOnClick(row)"></mat-row>
+      <mat-row *matRowDef="let row; columns: colunas;" [ngClass]="{'highlight-row': linhaSelecionada == row.id}" (dblclick)="linhaOnClick(row)" (click)="selecionaLinha(row)"></mat-row>
     </mat-table>
   </div>
+  <app-conteudo-tabela [idDisciplina]="linhaSelecionada" [uploads]="uploads" *ngIf="tabelaArquivos"></app-conteudo-tabela>
 </div>
-
-<app-conteudo-tabela [idDisciplina]="linhaSelecionada"></app-conteudo-tabela>

@@ -1,7 +1,7 @@
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { ConteudoService } from './../conteudo.service';
 import { DisciplinaService } from './../../disciplina/disciplina.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CursoService } from '../../cursos/curso.service';
 import { Conteudo } from '../conteudo';
 import { FormGroupDirective } from '@angular/forms';
@@ -20,6 +20,8 @@ export class ConteudoUploadFormComponent implements OnInit {
   cursos = [];
   disciplinas = [];
 
+  @Output() uploadConcluido = new EventEmitter();
+
   constructor(
     private cursoService: CursoService,
     private disciplnaService: DisciplinaService,
@@ -37,7 +39,8 @@ export class ConteudoUploadFormComponent implements OnInit {
     this.conteudo.nome = this.nomeDoArquivo;
     this.conteudoService.upload(this.file, this.conteudo)
       .then( () => {
-        this.toastyService.success('Upload concluído com sucesso.');  
+        this.toastyService.success('Upload concluído com sucesso.'); 
+        this.uploadConcluido.emit(); 
       })
       .catch( error => this.errorHandlerService.handle(error));
   }

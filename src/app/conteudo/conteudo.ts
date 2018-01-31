@@ -6,6 +6,8 @@ export class Conteudo {
     nome: string;
     descricao: string;
     extensao: string;
+    tamanho: number;
+    dataEnvio: Date;
     link: string;
     disciplina: Disciplina;
     usuario: Usuario;

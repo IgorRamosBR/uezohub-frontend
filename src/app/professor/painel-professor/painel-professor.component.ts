@@ -11,6 +11,9 @@ import { MatTableDataSource, MatSort } from '@angular/material';
 export class PainelProfessorComponent implements OnInit {
 
   linhaSelecionada = -1;
+  linhaClicada = -1;
+  uploads = 0;
+  nomeDisciplinaSelecionada = '';
   tabelaDisciplinas = true;
   tabelaArquivos = false;
 
@@ -34,14 +37,24 @@ export class PainelProfessorComponent implements OnInit {
   }
 
   linhaOnClick(row) {
-    this.linhaSelecionada = row.id;
+    this.linhaClicada = row.id;
+    this.nomeDisciplinaSelecionada = row.nome;
     this.tabelaArquivos = true;
     this.tabelaDisciplinas = false;
+  }
+
+  selecionaLinha(row) {
+    this.linhaSelecionada = row.id;
   }
 
   todasAsDisciplinas() {
     this.tabelaArquivos = false;
     this.tabelaDisciplinas = true;
+    this.linhaSelecionada = -1;
+  }
+
+  aoUpload() {
+    this.uploads++;
   }
 
   buscarTodasAsDisciplinas(): any {
