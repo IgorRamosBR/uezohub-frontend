@@ -1,5 +1,6 @@
+import { EscolhaCursoComponent } from './escolha-curso/escolha-curso.component';
 import { SharedModule } from './../shared/shared.module';
-import { MatButtonModule, MatCheckboxModule, MatInputModule, MatTableModule, MatSortModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatInputModule, MatTableModule, MatSortModule, MatCardModule } from '@angular/material';
 import { CursosFormComponent } from './cursos-form/cursos-form.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,16 +18,19 @@ import { CursosTabelaComponent } from './cursos-tabela/cursos-tabela.component';
     MatInputModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatCardModule,
     MatTableModule,
     MatSortModule
   ],
   declarations: [
     CursoComponent,
     CursosFormComponent,
-    CursosTabelaComponent
+    CursosTabelaComponent,
+    EscolhaCursoComponent
   ],
   exports: [
-    CursoComponent
+    CursoComponent,
+    EscolhaCursoComponent
   ]
 })
 export class CursosModule { }

@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule, MatSortModule, MatInputModule, MatCardModule, MatButtonModule } from '@angular/material';
 import { PainelAlunoComponent } from './painel-aluno/painel-aluno.component';
-import { EscolhaCursoComponent } from './escolha-curso/escolha-curso.component';
 import { AlunoFormComponent } from './aluno-form/aluno-form.component';
 import { FormsModule } from '@angular/forms';
 
@@ -22,12 +21,10 @@ import { FormsModule } from '@angular/forms';
   ],
   declarations: [
     PainelAlunoComponent,
-    EscolhaCursoComponent,
     AlunoFormComponent
   ],
   exports: [
-    PainelAlunoComponent,
-    EscolhaCursoComponent
+    PainelAlunoComponent
   ]
 })
 export class AlunoModule { }

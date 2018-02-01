@@ -27,7 +27,12 @@ export class AppComponent {
   }
 
   exibindoNavegacao() {
-    return this.router.url !== '/login';
+    if(this.router.url === '/login')
+      return false;
+    if(this.router.url === '/escolha-curso')
+      return false;
+    return true;
+    //return this.router.url !== '/login' ;
   }
 
   logout() {

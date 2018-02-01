@@ -11,6 +11,7 @@ import { CoordenadorFormComponent } from './coordenador/coordenador-form/coorden
 import { AlunoFormComponent } from './aluno/aluno-form/aluno-form.component';
 import { AuthGuard } from './seguranca/auth.guard';
 import { PainelProfessorComponent } from './professor/painel-professor/painel-professor.component';
+import { EscolhaCursoComponent } from './cursos/escolha-curso/escolha-curso.component';
 
 const rotas: Routes = [
     {path: 'index', component: IndexComponent},
@@ -56,6 +57,12 @@ const rotas: Routes = [
       component: AlunoFormComponent,
       canActivate: [AuthGuard],
       data: { roles: ['COORDENADOR'] }
+    },
+    {
+      path: 'escolha-curso', 
+      component: EscolhaCursoComponent,
+      canActivate: [AuthGuard],
+      data: { roles: ['ALUNO'] }
     },
     {path: '**', redirectTo: 'login'}
   ];

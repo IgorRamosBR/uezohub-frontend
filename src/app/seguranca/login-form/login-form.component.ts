@@ -28,7 +28,7 @@ export class LoginFormComponent implements OnInit {
         } else if (this.auth.temPermissao('PROFESSOR')) {
           this.router.navigate(['/painel-professor']);
         } else if (this.auth.temPermissao('ALUNO')) {
-          this.router.navigate(['/painel-aluno']);
+          this.router.navigate(['/escolha-curso']);
         }
       })
       .catch(erro => {
