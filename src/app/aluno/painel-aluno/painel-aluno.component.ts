@@ -1,6 +1,8 @@
 import { MatSort, MatTableDataSource } from '@angular/material';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DisciplinaService } from '../../disciplina/disciplina.service';
+import { ErrorHandlerService } from '../../core/error-handler.service';
 
 @Component({
   selector: 'app-painel-aluno',
@@ -10,20 +12,27 @@ import { ActivatedRoute } from '@angular/router';
 export class PainelAlunoComponent implements OnInit{
 
   curso = '';
+
   linhaSelecionada = -1;
-  colunas = ['nome', 'quantidadeArquivos', 'data'];
+  linhaClicada = -1;
 
-  dataSource = new MatTableDataSource<Element>(DADOS);
+  nomeDisciplinaSelecionada = '';
+  tabelaDisciplinas = true;
+  tabelaArquivos = false;
 
+  colunas = ['nome', 'curso', 'ativo'];
+  dataSource: MatTableDataSource<any> | null;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private disciplinaService: DisciplinaService,
+    private errorHandlerService: ErrorHandlerService
   ) { }
 
   ngOnInit() {
     this.curso = this.route.snapshot.params['curso'];
-    this.dataSource.sort = this.sort;
+    this.buscarTodasAsDisciplinas();
   }
 
   applyFilter(filterValue: string) {
@@ -33,21 +42,37 @@ export class PainelAlunoComponent implements OnInit{
   }
 
   linhaOnClick(row) {
+    this.linhaClicada = row.id;
+    this.nomeDisciplinaSelecionada = row.nome;
+    this.tabelaArquivos = true;
+    this.tabelaDisciplinas = false;
+    console.log('eei');
+  }
+
+  selecionaLinha(row) {
     this.linhaSelecionada = row.id;
-    console.log(row);
-    console.log(row.id);
+  }
+
+  todasAsDisciplinas() {
+    this.tabelaArquivos = false;
+    this.tabelaDisciplinas = true;
+    this.linhaSelecionada = -1;
+  }
+
+  buscarTodasAsDisciplinas(): any {
+    this.disciplinaService.buscarTodos()
+      .then(disciplinas => {
+        this.dataSource = new MatTableDataSource(disciplinas);
+        this.dataSource.sort = this.sort;
+      })
+      .catch(error => this.errorHandlerService.handle(error));
+  }
+
+  getColor(ativo: boolean) {
+    if ( ativo === true) {
+      return '#009688';
+    } else {
+      return '#F44336';
+    }
   }
 }
-
-export interface Element {
-  nome: string;
-  id: number;
-  quantidadeArquivos: number;
-  data: string;
-}
-
-const DADOS: Element[] = [
-  {id: 1, nome: 'Construção de Algoritmos', quantidadeArquivos: 4, data: '15/10/17'},
-  {id: 2, nome: 'Estrutura de Dados', quantidadeArquivos: 10, data: '10/10/17'},
-  {id: 3, nome: 'Cálculo I', quantidadeArquivos: 2, data: '10/10/17'},
-];

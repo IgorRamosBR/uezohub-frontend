@@ -1,3 +1,4 @@
+import { ConteudoModule } from './../conteudo/conteudo.module';
 import { SharedModule } from './../shared/shared.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
@@ -13,6 +14,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
 
     SharedModule,
+    ConteudoModule,
+
     MatTableModule,
     MatSortModule,
     MatInputModule,
