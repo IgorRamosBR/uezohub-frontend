@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { EscolhaCursoComponent } from './escolha-curso/escolha-curso.component';
 import { SharedModule } from './../shared/shared.module';
 import { MatButtonModule, MatCheckboxModule, MatInputModule, MatTableModule, MatSortModule, MatCardModule } from '@angular/material';
@@ -12,6 +13,7 @@ import { CursosTabelaComponent } from './cursos-tabela/cursos-tabela.component';
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
 
     SharedModule,
 

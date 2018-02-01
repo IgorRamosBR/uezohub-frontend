@@ -8,7 +8,7 @@ import { CursoService } from '../curso.service';
   styleUrls: ['./escolha-curso.component.css']
 })
 export class EscolhaCursoComponent implements OnInit{
-  
+
   cursos = [];
 
   constructor(
@@ -25,9 +25,5 @@ export class EscolhaCursoComponent implements OnInit{
         this.cursos = cursos;
       })
       .catch(error => this.errorHandler.handle(error));
-  }
-
-  escolheCurso() {
-    console.log('foi');
   }
 }

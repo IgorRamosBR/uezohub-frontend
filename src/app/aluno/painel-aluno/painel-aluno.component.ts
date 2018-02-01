@@ -1,23 +1,28 @@
 import { MatSort, MatTableDataSource } from '@angular/material';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-painel-aluno',
   templateUrl: './painel-aluno.component.html',
   styleUrls: ['./painel-aluno.component.css']
 })
-export class PainelAlunoComponent {
+export class PainelAlunoComponent implements OnInit{
 
-  curso = 'Ciência da Computação';
+  curso = '';
   linhaSelecionada = -1;
   colunas = ['nome', 'quantidadeArquivos', 'data'];
-
 
   dataSource = new MatTableDataSource<Element>(DADOS);
 
   @ViewChild(MatSort) sort: MatSort;
 
-  ngAfterViewInit() {
+  constructor(
+    private route: ActivatedRoute
+  ) { }
+
+  ngOnInit() {
+    this.curso = this.route.snapshot.params['curso'];
     this.dataSource.sort = this.sort;
   }
 

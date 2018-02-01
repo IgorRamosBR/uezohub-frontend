@@ -12,54 +12,61 @@ import { AlunoFormComponent } from './aluno/aluno-form/aluno-form.component';
 import { AuthGuard } from './seguranca/auth.guard';
 import { PainelProfessorComponent } from './professor/painel-professor/painel-professor.component';
 import { EscolhaCursoComponent } from './cursos/escolha-curso/escolha-curso.component';
+import { PainelAlunoComponent } from './aluno/painel-aluno/painel-aluno.component';
 
 const rotas: Routes = [
     {path: 'index', component: IndexComponent},
     {path: 'login', component: LoginFormComponent},
     {
-      path: 'painel-coordenador', 
+      path: 'painel-coordenador',
       component: PainelCoordenadorComponent,
       canActivate: [AuthGuard],
       data: { roles: ['COORDENADOR'] }
     },
     {
-      path: 'painel-professor', 
+      path: 'painel-professor',
       component: PainelProfessorComponent,
       canActivate: [AuthGuard],
       data: { roles: ['PROFESSOR'] }
     },
     {
-      path: 'cursos', 
+      path: 'painel-aluno/:curso',
+      component: PainelAlunoComponent,
+      canActivate: [AuthGuard],
+      data: { roles: ['ALUNO'] }
+    },
+    {
+      path: 'cursos',
       component: CursoComponent,
       canActivate: [AuthGuard],
       data: { roles: ['COORDENADOR'] }
     },
     {
-      path: 'disciplinas', 
+      path: 'disciplinas',
       component: DisciplinaFormComponent,
       canActivate: [AuthGuard],
       data: { roles: ['COORDENADOR'] }
     },
     {
-      path: 'professor', 
+      path: 'professor',
       component: ProfessorFormComponent,
       canActivate: [AuthGuard],
       data: { roles: ['COORDENADOR'] }
     },
     {
-      path: 'coordenador', 
+      path: 'coordenador',
       component: CoordenadorFormComponent,
       canActivate: [AuthGuard],
       data: { roles: ['COORDENADOR'] }
     },
     {
-      path: 'aluno', 
+      path: 'aluno',
       component: AlunoFormComponent,
       canActivate: [AuthGuard],
       data: { roles: ['COORDENADOR'] }
     },
     {
-      path: 'escolha-curso', 
+      path: 'escolha-curso',
       component: EscolhaCursoComponent,
       canActivate: [AuthGuard],
       data: { roles: ['ALUNO'] }
