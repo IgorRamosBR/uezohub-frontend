@@ -63,7 +63,7 @@
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: colunas;" [ngClass]="{'highlight-row': linhaSelecionada == row.id}" (dblclick)="linhaOnClick(row)"
+      <mat-row *matRowDef="let row; columns: colunas;" style="cursor:pointer;" [ngClass]="{'highlight-row': linhaSelecionada == row.id}" (dblclick)="linhaOnClick(row)"
         (click)="selecionaLinha(row)"></mat-row>
     </mat-table>
   </div>

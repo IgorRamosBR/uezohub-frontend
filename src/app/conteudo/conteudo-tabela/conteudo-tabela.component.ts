@@ -12,8 +12,8 @@ export class ConteudoTabelaComponent implements OnInit {
 
   @Input() idDisciplina: any;
   @Input() uploads: any;
-  
-  colunas = ['nome', 'responsavel', 'data'];
+
+  colunas = ['nome', 'responsavel', 'data', 'link'];
   dataSource: MatTableDataSource<any> | null;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -40,7 +40,9 @@ export class ConteudoTabelaComponent implements OnInit {
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
-  
+  linhaOnClick(row) {
+    console.log(row.link);
+  }
   buscarTodosOsConteudos(): any {
     this.conteudoService.buscarTodos()
       .then(conteudos => {
