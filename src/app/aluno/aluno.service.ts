@@ -18,6 +18,12 @@ export class AlunoService {
       .then(response => response.json());
   }
 
+  buscarPorId(id: number): Promise<any> {
+    return this.http.get(`${this.alunoUrl}/${id}`)
+      .toPromise()
+      .then(response => response.json() as Aluno);
+  }
+
   salvar(aluno: Aluno): Promise<any> {
     return this.http.post(this.alunoUrl, aluno)
       .toPromise()

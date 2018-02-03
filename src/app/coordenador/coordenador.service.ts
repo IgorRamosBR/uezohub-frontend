@@ -20,6 +20,12 @@ export class CoordenadorService {
       .then(response => response.json());
   }
 
+  buscarPorId(id: number): Promise<any> {
+    return this.http.get(`${this.coordenadorUrl}/${id}`)
+      .toPromise()
+      .then(response => response.json() as Coordenador);
+  }
+
   salvar(coordenador: Coordenador): Promise<any> {
     return this.http.post(this.coordenadorUrl, coordenador)
       .toPromise()

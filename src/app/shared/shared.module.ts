@@ -1,19 +1,25 @@
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AtivoConversorPipe } from './ativo-conversor.pipe';
 import { PrimeiroNomePipe } from './primeiro-nome.pipe';
+import { UsuarioFormComponent } from './usuario-form/usuario-form.component';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule, MatButtonModule, MatToolbarModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
-    MatToolbarModule
+    FormsModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatButtonModule
   ],
   declarations: [
     ToolbarComponent,
     AtivoConversorPipe,
-    PrimeiroNomePipe
+    PrimeiroNomePipe,
+    UsuarioFormComponent
   ],
   exports: [
     ToolbarComponent,

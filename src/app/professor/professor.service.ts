@@ -20,6 +20,12 @@ export class ProfessorService {
       .then(response => response.json());
   }
 
+  buscarPorId(id: number): Promise<any> {
+    return this.http.get(`${this.professorUrl}/${id}`)
+      .toPromise()
+      .then(response => response.json() as Professor);
+  }
+
   salvar(professor: Professor): Promise<any> {
     return this.http.post(this.professorUrl, professor)
       .toPromise()

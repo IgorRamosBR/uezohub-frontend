@@ -1,0 +1,55 @@
+<div class="espacamento-container">
+  <form autocomplete="off" #f="ngForm" (ngSubmit)="salvar(f)"> 
+    <h3 class="texto-secundario">Minha conta </h3>
+    <hr>
+
+    <div class="row">
+      <div class="col-md-8">
+        <mat-form-field class="campo-full-width">
+          <input matInput placeholder="Nome" name="name" [(ngModel)]="usuario.nome" #name="ngModel" required minlength="2"
+            maxlength="30">
+          <mat-error *ngIf="name.hasError('maxlength') && (name.dirty || isSubmitted)">
+            Entre com um Nome válido.
+          </mat-error>
+          <mat-error *ngIf="name.hasError('required') && name.dirty">
+            Nome é obrigatório
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field class="campo-full-width">
+          <input matInput placeholder="Matrícula" name="matricula" [(ngModel)]="usuario.matricula" #matricula="ngModel" minlength="2"
+            maxlength="20">
+        </mat-form-field>
+
+      </div>
+
+      <div class="col-md-6">
+        <mat-form-field class="campo-full-width">
+          <input matInput placeholder="E-mail" type="email" [email]="true" name="email" [(ngModel)]="usuario.email" #email="ngModel" required  maxlength="60"> 
+          <mat-error *ngIf="email.hasError('email') && (email.dirty || isSubmitted)">
+            Entre com um E-mail válido.
+          </mat-error>
+          <mat-error *ngIf="email.hasError('required') && email.dirty">
+            E-mail é obrigatório
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="campo-full-width">
+          <input matInput placeholder="Senha" type="password" name="senha" [(ngModel)]="usuario.senha" #senha="ngModel" required minlength="2"
+            maxlength="20">
+          <mat-error *ngIf="senha.hasError('maxlength') && (senha.dirty || isSubmitted)">
+            Entre com uma senha válida.
+          </mat-error>
+          <mat-error *ngIf="senha.hasError('required') && senha.dirty">
+            Senha é obrigatória
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <button mat-raised-button type="submit" color="primary" class="botao" [disabled]="f.invalid">Salvar</button>
+    <button mat-raised-button type="button" color="primary" class="botao" (click)="novo(f)">Novo</button>
+  </form>
+</div>

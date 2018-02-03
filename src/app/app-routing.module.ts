@@ -1,3 +1,4 @@
+import { UsuarioFormComponent } from './shared/usuario-form/usuario-form.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -70,6 +71,12 @@ const rotas: Routes = [
       component: EscolhaCursoComponent,
       canActivate: [AuthGuard],
       data: { roles: ['ALUNO'] }
+    },
+    {
+      path: 'minha-conta',
+      component: UsuarioFormComponent,
+      canActivate: [AuthGuard],
+      data: { roles: ['COORDENADOR', 'PROFESSOR', 'ALUNO'] }
     },
     {path: '**', redirectTo: 'login'}
   ];
