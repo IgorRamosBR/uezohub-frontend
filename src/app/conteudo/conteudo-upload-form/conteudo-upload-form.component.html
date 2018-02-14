@@ -6,18 +6,10 @@
         Novo Upload
       </mat-panel-title>
       <mat-panel-description>
-        Escolha a disciplina e o curso
+        Escolha a disciplina 
       </mat-panel-description>
     </mat-expansion-panel-header>
     <form #f=ngForm (ngSubmit)="upload()">
-    <mat-form-field>
-        <mat-select placeholder="Selecione o Curso" name="curso" [(ngModel)]="conteudo.disciplina.curso.id" required>
-            <mat-option *ngFor="let curso of cursos" [value]="curso.value">
-              {{ curso.viewValue }}
-            </mat-option>
-          </mat-select>
-    </mat-form-field>
-
     <mat-form-field>
         <mat-select placeholder="Selecione a Disciplina" name="disciplina" [(ngModel)]="conteudo.disciplina.id" required>
             <mat-option *ngFor="let disciplina of disciplinas" [value]="disciplina.value">

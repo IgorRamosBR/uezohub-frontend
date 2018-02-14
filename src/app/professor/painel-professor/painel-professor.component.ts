@@ -1,3 +1,4 @@
+import { AuthService } from './../../seguranca/auth.service';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { DisciplinaService } from './../../disciplina/disciplina.service';
 import { Component, ViewChild, OnInit, Output } from '@angular/core';
@@ -23,8 +24,9 @@ export class PainelProfessorComponent implements OnInit {
 
   constructor(
     private disciplinaService: DisciplinaService,
+    private authService: AuthService,
     private errorHandlerService: ErrorHandlerService
-  ){}
+  ) {}
 
   ngOnInit() {
     this.buscarTodasAsDisciplinas();
@@ -58,12 +60,15 @@ export class PainelProfessorComponent implements OnInit {
   }
 
   buscarTodasAsDisciplinas(): any {
-    this.disciplinaService.buscarTodos()
-      .then(disciplinas => {
-        this.dataSource = new MatTableDataSource(disciplinas);
-        this.dataSource.sort = this.sort;
-      })
-      .catch(error => this.errorHandlerService.handle(error));
+    if (this.authService.temPermissao('PROFESSOR')) {
+      const id = this.authService.jwtPayload.id;
+      this.disciplinaService.buscarPorProfessorAssociado(id)
+        .then(disciplinas => {
+          this.dataSource = new MatTableDataSource(disciplinas);
+          this.dataSource.sort = this.sort;
+        })
+        .catch(error => this.errorHandlerService.handle(error));
+    }
   }
 
   getColor(ativo: boolean) {

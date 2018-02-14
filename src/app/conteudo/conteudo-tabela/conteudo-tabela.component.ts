@@ -24,15 +24,18 @@ export class ConteudoTabelaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.buscarTodosOsConteudos();
+    if (this.idDisciplina) {
+      console.log(this.idDisciplina);
+      this.buscarConteudosPorDisciplina(this.idDisciplina);
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    /*if(this.idDisciplina && this.idDisciplina != 1) {
-      console.log(this.idDisciplina);
-      this.buscarTodosOsConteudos();
-    }*/
-    this.buscarTodosOsConteudos();
+    if (this.idDisciplina) {
+      this.buscarConteudosPorDisciplina(this.idDisciplina);
+    } else {
+      this.dataSource = null;
+    }
   }
 
   applyFilter(filterValue: string) {
@@ -40,11 +43,23 @@ export class ConteudoTabelaComponent implements OnInit {
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
+
   linhaOnClick(row) {
     console.log(row.link);
   }
+
   buscarTodosOsConteudos(): any {
     this.conteudoService.buscarTodos()
+      .then(conteudos => {
+        this.dataSource = new MatTableDataSource(conteudos);
+        this.dataSource.sort = this.sort;
+        this.changeDetectorRefs.detectChanges();
+      })
+      .catch(error => this.errorHandlerService.handle(error));
+  }
+
+  buscarConteudosPorDisciplina(id: number) {
+    this.conteudoService.buscarConteudosPorDisciplina(id)
       .then(conteudos => {
         this.dataSource = new MatTableDataSource(conteudos);
         this.dataSource.sort = this.sort;

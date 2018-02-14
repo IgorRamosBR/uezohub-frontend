@@ -9,7 +9,7 @@ import { HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class ConteudoService {
 
-  conteudoUrl = environment.API_BASE_URL + "/conteudo"
+  conteudoUrl = environment.API_BASE_URL + '/conteudo';
 
   constructor(
     private http: UezohubHttpFormData,
@@ -22,15 +22,21 @@ export class ConteudoService {
       .then(response => response.json());
   }
 
+  buscarConteudosPorDisciplina(id: number): Promise<any> {
+    return this.http.get(`${this.conteudoUrl}/disciplina/${id}`)
+      .toPromise()
+      .then(response => response.json());
+  }
+
   upload(file: FileList, conteudo: Conteudo): Promise<any> {
-    let formData: FormData = new FormData();
+    const formData: FormData = new FormData();
     conteudo.usuario.id = 2;
 
-    let files: FileList = file;
+    const files: FileList = file;
 
     formData.append('conteudo', JSON.stringify(conteudo));
     formData.append('file', file[0]);
-    
+
     console.log(file);
     console.log(JSON.stringify(conteudo));
     return this.http.post(this.conteudoUrl, formData)
