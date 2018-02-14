@@ -19,6 +19,12 @@ export class DisciplinaService {
       .then(response => response.json());
   }
 
+  buscarPorProfessorAssociado(id: number): Promise<any> {
+    return this.http.get(`${this.disciplinaUrl}/professor/${id}`)
+      .toPromise()
+      .then(response => response.json());
+  }
+
   salvar(disciplina: Disciplina): Promise<any> {
     if (disciplina.ativo === undefined) {
       disciplina.ativo = false;

@@ -1,3 +1,4 @@
+import { ProfessorService } from './../../professor/professor.service';
 import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { FormGroupDirective } from '@angular/forms';
 import { MatTableDataSource, MatSort } from '@angular/material';
@@ -8,6 +9,7 @@ import { DisciplinaService } from './../disciplina.service';
 import { CursoService } from './../../cursos/curso.service';
 import { Disciplina } from './../disciplina';
 import { ErrorHandlerService } from '../../core/error-handler.service';
+import { Usuario } from '../../seguranca/usuario';
 
 
 @Component({
@@ -29,6 +31,7 @@ export class DisciplinaFormComponent implements OnInit {
   constructor(
     private cursoService: CursoService,
     private disciplinaService: DisciplinaService,
+    private professorService: ProfessorService,
     private changeDetectorRefs: ChangeDetectorRef,
     private toasty: ToastyService,
     private errorHandlerService: ErrorHandlerService
@@ -37,6 +40,7 @@ export class DisciplinaFormComponent implements OnInit {
   ngOnInit() {
     this.carregaCursos();
     this.buscarTodasAsDisciplinas();
+    this.buscarTodosOsProfessores();
   }
 
   applyFilter(filterValue: string) {
@@ -80,6 +84,16 @@ export class DisciplinaFormComponent implements OnInit {
     }
   }
 
+  associaProfessor(event) {
+    const id = event;
+    if (this.disciplina.usuario && id) {
+      this.disciplina.usuario.id = id;
+    } else {
+      this.disciplina.usuario = new Usuario();
+      this.disciplina.usuario.id = id;
+    }
+  }
+
   getColor(ativo: boolean) {
     if ( ativo === true) {
       return '#009688';
@@ -96,6 +110,16 @@ export class DisciplinaFormComponent implements OnInit {
         this.changeDetectorRefs.detectChanges();
       })
       .catch(error => this.errorHandlerService.handle(error));
+  }
+
+  buscarTodosOsProfessores(): any {
+    this.professorService.buscarTodos()
+      .then(professores => {
+        this.professores = professores.map( p => {
+          return {value: p.id, viewValue: p.nome };
+        });
+      })
+    .catch(error => this.errorHandlerService.handle(error));
   }
 
   carregaCursos() {

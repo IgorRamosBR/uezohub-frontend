@@ -31,7 +31,7 @@
       </div>
       <div class="col-md-4">
         <mat-form-field class="campo-full-width">
-          <mat-select placeholder="Associe um professor">
+          <mat-select placeholder="Associe um professor" name="usuario" [ngModel]="disciplina.usuario?.id" (ngModelChange)="associaProfessor($event)">
             <mat-option *ngFor="let professor of professores" [value]="professor.value">
               {{ professor.viewValue }}
             </mat-option>
@@ -77,7 +77,7 @@
           <!-- Professor Column -->
           <ng-container matColumnDef="professor">
               <mat-header-cell *matHeaderCellDef mat-sort-header> Professor </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.professor}} </mat-cell>
+              <mat-cell *matCellDef="let element"> {{element.usuario?.nome}} </mat-cell>
           </ng-container>
 
           <!-- Ativo Column -->
