@@ -7,9 +7,6 @@
         </span>
         <!--<span class="toolbar-titulo texto-primario">UezoHub</span>-->
         <span class="toolbar-spacer"></span>
-        <span class="toolbar-itens texto-secundario">
-            <a href="javascript:;" (click)="logout()">Sair </a>
-        </span>
     </mat-toolbar>
 
     <ul class="sidenav-menu" [hidden]="!exibindoMenu">
@@ -17,11 +14,11 @@
         <li class="sidenav-user-pic">
             <i class="fa fa-user-circle-o" aria-hidden="true"></i>
         </li>
-        <li class="sidenav-itens" style="margin-bottom:20px;">{{auth.jwtPayload?.nome | primeiroNome}}
-            <a routerLink="/minha-conta" style="color:white"><i class="fa fa-pencil" style="margin-left:10px" aria-hidden="true"></i></a>
+        <li class="sidenav-user-title" style="margin-bottom:20px;">
+            {{auth.jwtPayload?.nome | primeiroNome}}
         </li>
         <hr>
-        <li class="sidenav-itens" routerLinkActive="ativo">
+        <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('COORDENADOR')">
             <a routerLink="/painel-coordenador">Home</a>
         </li>
         <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('COORDENADOR')">
@@ -38,6 +35,15 @@
         </li>
         <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('COORDENADOR')">
             <a routerLink="/coordenador">Coordenadores</a>
+        </li>
+        <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('ALUNO')">
+            <a routerLink="/escolha-curso">Trocar de Curso</a>
+        </li>
+        <li class="sidenav-itens" routerLinkActive="ativo">
+            <a routerLink="/minha-conta">Minha conta</a>
+        </li>
+        <li class="sidenav-itens" routerLinkActive="ativo">
+                <a routerLink="/logout">Sair</a>
         </li>
     </ul>
 </div>
