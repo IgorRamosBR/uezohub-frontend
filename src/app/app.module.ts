@@ -1,3 +1,4 @@
+import { UsuarioModule } from './usuario/usuario.module';
 import { ConteudoService } from './conteudo/conteudo.service';
 import { AlunoService } from './aluno/aluno.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -28,6 +29,7 @@ import { DisciplinaService } from './disciplina/disciplina.service';
 import { SegurancaModule } from './seguranca/seguranca.module';
 import { CoordenadorService } from './coordenador/coordenador.service';
 import { ConteudoModule } from './conteudo/conteudo.module';
+import { UsuarioService } from './usuario/usuario.service';
 
 
 @NgModule({
@@ -46,6 +48,7 @@ import { ConteudoModule } from './conteudo/conteudo.module';
     AlunoModule,
     ProfessorModule,
     CoordenadorModule,
+    UsuarioModule,
     CursosModule,
     DisciplinaModule,
     ConteudoModule,
@@ -60,6 +63,7 @@ import { ConteudoModule } from './conteudo/conteudo.module';
     ProfessorService,
     CoordenadorService,
     AlunoService,
+    UsuarioService,
     AuthService,
     ConteudoService,
 

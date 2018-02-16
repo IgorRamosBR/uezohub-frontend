@@ -14,6 +14,7 @@ import { PainelProfessorComponent } from './professor/painel-professor/painel-pr
 import { EscolhaCursoComponent } from './cursos/escolha-curso/escolha-curso.component';
 import { PainelAlunoComponent } from './aluno/painel-aluno/painel-aluno.component';
 import { UsuarioFormComponent } from './usuario/usuario-form/usuario-form.component';
+import { AlterarSenhaComponent } from './usuario/alterar-senha/alterar-senha.component';
 
 const rotas: Routes = [
     {path: 'index', component: IndexComponent},
@@ -75,6 +76,12 @@ const rotas: Routes = [
     {
       path: 'minha-conta',
       component: UsuarioFormComponent,
+      canActivate: [AuthGuard],
+      data: { roles: ['COORDENADOR', 'PROFESSOR', 'ALUNO'] }
+    },
+    {
+      path: 'alterar-senha',
+      component: AlterarSenhaComponent,
       canActivate: [AuthGuard],
       data: { roles: ['COORDENADOR', 'PROFESSOR', 'ALUNO'] }
     },

@@ -21,9 +21,7 @@ import { AlterarSenhaComponent } from '../usuario/alterar-senha/alterar-senha.co
   declarations: [
     ToolbarComponent,
     AtivoConversorPipe,
-    PrimeiroNomePipe,
-    UsuarioFormComponent,
-    AlterarSenhaComponent
+    PrimeiroNomePipe
   ],
   exports: [
     ToolbarComponent,

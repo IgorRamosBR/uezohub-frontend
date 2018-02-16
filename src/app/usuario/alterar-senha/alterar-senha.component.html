@@ -1,0 +1,29 @@
+<div class="espacamento-container">
+
+  <h3 class="texto-secundario ">Alterar senha </h3>
+  <hr>
+
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="campo-full-width">
+          <input matInput placeholder="Senha atual" type="password" name="senhaAtual" [(ngModel)]="senhaAtual" #senhaatual="ngModel"  required minlength="4" maxlength="200">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+          <mat-form-field class="campo-full-width">
+              <input matInput placeholder="Nova senha" type="password" name="novaSenha" [(ngModel)]="novaSenha"  #novasenha="ngModel" required minlength="4" maxlength="200">
+              <mat-error *ngIf="novasenha.hasError('maxlength') && novasenha.hasError('minlength') && (novasenha.dirty || isSubmitted)">
+                  Entre com uma senha válida.
+              </mat-error>
+          </mat-form-field>
+      </div>
+    </div>
+
+    <button mat-raised-button type="submit" color="primary" class="botao" [disabled]="f.invalid">Salvar</button>
+    <button mat-raised-button type="button" color="primary" class="botao" (click)="novo(f)">Novo</button>
+
+  </form>
+</div>
