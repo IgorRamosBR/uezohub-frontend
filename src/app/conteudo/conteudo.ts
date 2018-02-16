@@ -1,5 +1,5 @@
 import { Disciplina } from "../disciplina/disciplina";
-import { Usuario } from "../seguranca/usuario";
+import { Usuario } from "../usuario/usuario";
 
 export class Conteudo {
     id: number;

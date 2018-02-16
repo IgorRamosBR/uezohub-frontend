@@ -1,12 +1,14 @@
+import { Component, OnInit } from '@angular/core';
+import { FormGroupDirective } from '@angular/forms';
+
 import { ToastyService } from 'ng2-toasty';
-import { ErrorHandlerService } from './../../core/error-handler.service';
+
 import { AuthService } from './../../seguranca/auth.service';
+import { ErrorHandlerService } from './../../core/error-handler.service';
 import { CoordenadorService } from './../../coordenador/coordenador.service';
 import { ProfessorService } from './../../professor/professor.service';
 import { AlunoService } from './../../aluno/aluno.service';
-import { Usuario } from './../../seguranca/usuario';
-import { Component, OnInit } from '@angular/core';
-import { FormGroupDirective } from '@angular/forms';
+import { Usuario } from '../usuario';
 
 @Component({
   selector: 'app-usuario-form',
@@ -15,7 +17,7 @@ import { FormGroupDirective } from '@angular/forms';
 })
 export class UsuarioFormComponent implements OnInit {
 
-  usuario: Usuario;
+  usuario = new Usuario();
 
   constructor(
     private alunoService: AlunoService,
@@ -32,9 +34,8 @@ export class UsuarioFormComponent implements OnInit {
   }
 
   private buscarUsuario() {
-    // BUSCAR ID USUARIO LOGADO
-    const id = -1;
-    // BUSCAR ID USUARIO LOGADO
+    const id = this.authService.jwtPayload.id;
+    
     if (this.authService.temPermissao('COORDENADOR')) {
       this.coordenadorService.buscarPorId(id)
         .then(coordenador => this.usuario = coordenador)
@@ -47,7 +48,7 @@ export class UsuarioFormComponent implements OnInit {
 
     } else if (this.authService.temPermissao('ALUNO')) {
       this.alunoService.buscarPorId(id)
-        .then(aluno => this.usuario = aluno)
+        .then(aluno => {this.usuario = aluno; console.log(this.usuario);})
         .catch(error => this.errorHandlerService.handle(error));
     }
   }

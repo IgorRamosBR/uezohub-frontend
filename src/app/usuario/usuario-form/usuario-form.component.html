@@ -4,7 +4,8 @@
     <hr>
 
     <div class="row">
-      <div class="col-md-8">
+      <div [ngClass]="{'col-md-12': !authService.temPermissao('COORDENADOR'),
+                      'col-md-8': authService.temPermissao('COORDENADOR')}">
         <mat-form-field class="campo-full-width">
           <input matInput placeholder="Nome" name="name" [(ngModel)]="usuario.nome" #name="ngModel" required minlength="2"
             maxlength="30">
@@ -16,14 +17,15 @@
           </mat-error>
         </mat-form-field>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4" *ngIf="authService.temPermissao('COORDENADOR')">
         <mat-form-field class="campo-full-width">
           <input matInput placeholder="Matrícula" name="matricula" [(ngModel)]="usuario.matricula" #matricula="ngModel" minlength="2"
             maxlength="20">
         </mat-form-field>
 
       </div>
-
+    </div>
+    <div class="row">
       <div class="col-md-6">
         <mat-form-field class="campo-full-width">
           <input matInput placeholder="E-mail" type="email" [email]="true" name="email" [(ngModel)]="usuario.email" #email="ngModel" required  maxlength="60"> 
@@ -38,7 +40,7 @@
       <div class="col-md-6">
         <mat-form-field class="campo-full-width">
           <input matInput placeholder="Senha" type="password" name="senha" [(ngModel)]="usuario.senha" #senha="ngModel" required minlength="2"
-            maxlength="20">
+            maxlength="200">
           <mat-error *ngIf="senha.hasError('maxlength') && (senha.dirty || isSubmitted)">
             Entre com uma senha válida.
           </mat-error>

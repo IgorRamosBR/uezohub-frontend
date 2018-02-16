@@ -1,4 +1,3 @@
-import { UsuarioFormComponent } from './shared/usuario-form/usuario-form.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -14,6 +13,7 @@ import { AuthGuard } from './seguranca/auth.guard';
 import { PainelProfessorComponent } from './professor/painel-professor/painel-professor.component';
 import { EscolhaCursoComponent } from './cursos/escolha-curso/escolha-curso.component';
 import { PainelAlunoComponent } from './aluno/painel-aluno/painel-aluno.component';
+import { UsuarioFormComponent } from './usuario/usuario-form/usuario-form.component';
 
 const rotas: Routes = [
     {path: 'index', component: IndexComponent},

@@ -9,8 +9,7 @@ import { DisciplinaService } from './../disciplina.service';
 import { CursoService } from './../../cursos/curso.service';
 import { Disciplina } from './../disciplina';
 import { ErrorHandlerService } from '../../core/error-handler.service';
-import { Usuario } from '../../seguranca/usuario';
-
+import { Usuario } from '../../usuario/usuario';
 
 @Component({
   selector: 'app-disciplina-form',
