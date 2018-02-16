@@ -1,7 +1,7 @@
 import { CursoService } from './../../cursos/curso.service';
 import { MatSort, MatTableDataSource } from '@angular/material';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DisciplinaService } from '../../disciplina/disciplina.service';
 import { ErrorHandlerService } from '../../core/error-handler.service';
 import { Curso } from '../../cursos/curso';
@@ -28,13 +28,18 @@ export class PainelAlunoComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private disciplinaService: DisciplinaService,
     private cursoService: CursoService,
     private errorHandlerService: ErrorHandlerService
   ) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.params['curso'];
+    let id = this.route.snapshot.params['curso'];
+    console.log('passei aqui');
+    if(!id) {
+      id = this.verificaPreferencias();
+    }
     this.carregarCurso(id);
   }
 
@@ -78,6 +83,16 @@ export class PainelAlunoComponent implements OnInit {
         this.dataSource.sort = this.sort;
       })
       .catch(error => this.errorHandlerService.handle(error));
+  }
+
+  verificaPreferencias(): number {
+    const id = localStorage.getItem ('preferencia_curso');
+    if(id) {
+      return +id;
+    } else {
+      this.router.navigate(['/escolhe-curso']);
+      return -1;
+    }
   }
 
   getColor(ativo: boolean) {

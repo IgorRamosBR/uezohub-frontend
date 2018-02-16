@@ -21,6 +21,12 @@
         <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('COORDENADOR')">
             <a routerLink="/painel-coordenador">Home</a>
         </li>
+        <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('ALUNO')">
+            <a routerLink="/painel-aluno">Home</a>
+        </li>
+        <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('PROFESSOR')">
+            <a routerLink="/painel-professor">Home</a>
+        </li>
         <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('COORDENADOR')">
             <a routerLink="/aluno">Alunos</a>
         </li>

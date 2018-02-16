@@ -38,6 +38,12 @@ const rotas: Routes = [
       data: { roles: ['ALUNO'] }
     },
     {
+      path: 'painel-aluno',
+      component: PainelAlunoComponent,
+      canActivate: [AuthGuard],
+      data: { roles: ['ALUNO'] }
+    },
+    {
       path: 'cursos',
       component: CursoComponent,
       canActivate: [AuthGuard],

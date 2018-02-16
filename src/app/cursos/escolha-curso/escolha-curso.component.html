@@ -6,11 +6,9 @@
   </div>
   <div class="row">
     <div class="col-md-3" *ngFor="let curso of cursos">
-      <a [routerLink]="['/painel-aluno', curso.id]" style="text-decoration: none">
-        <mat-card class="card-curso text-center">
-          <p class="texto-secundario centralizar-verticalmente" style="color:#fff">{{curso.nome}}</p>
-        </mat-card>
-      </a>
+      <mat-card class="card-curso text-center" (click)="escolheCurso(curso.id)" style="cursor:pointer">
+        <p class="texto-secundario centralizar-verticalmente" style="color:#fff">{{curso.nome}}</p>
+      </mat-card>
     </div>
   </div>
 </div>
