@@ -1,3 +1,4 @@
+import { UezohubHttpFormData } from './../seguranca/uezohub-http-form-data';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 
@@ -14,9 +15,16 @@ export class UsuarioService {
 
   constructor(
     private http: AuthHttp,
+    private fotoHttp: UezohubHttpFormData,
     private authService: AuthService
   ) { }
 
+  buscarUsuarioPorId(id: number): Promise<any> {
+    return this.http.get(`${this.usuarioUrl}/${id}`)
+      .toPromise()
+      .then(response => response.json());
+      
+  }
   verificaSenha(senha: string): Promise<any> {
     const id = this.authService.jwtPayload.id;
     return this.http.post(`${this.usuarioUrl}/verificaSenha/${id}`, senha)
@@ -27,6 +35,18 @@ export class UsuarioService {
   alterarSenha(senha: string): Promise<any> {
     const id = this.authService.jwtPayload.id;
     return this.http.put(`${this.usuarioUrl}/senha/${id}`, senha)
+      .toPromise()
+      .then(response => response.json());
+  }
+
+  salvarFoto(id: number, file: FileList) {
+    const formData: FormData = new FormData();
+
+    const files: FileList = file;
+
+    formData.append("file", file[0]);
+
+    return this.fotoHttp.put(`${this.usuarioUrl}/foto/${id}`, formData)
       .toPromise()
       .then(response => response.json());
   }

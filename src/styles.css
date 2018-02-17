@@ -113,7 +113,11 @@ body {
     font-size: 128px;
 }
 
-.sidenav-user-title,
+.sidenav-user-title {
+    font-size: 20px;
+    padding-top: 20px;
+    margin-bottom: 0;
+}
 .sidenav-itens {
     font-size: 20px;
     padding: 10px;

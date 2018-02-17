@@ -11,11 +11,20 @@
 
     <ul class="sidenav-menu" [hidden]="!exibindoMenu">
         <li class="sidenav-titulo">UezoHub</li>
-        <li class="sidenav-user-pic">
-            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-        </li>
-        <li class="sidenav-user-title" style="margin-bottom:20px;">
+        <li class="sidenav-user-title">
             {{auth.jwtPayload?.nome | primeiroNome}}
+        </li>
+        <li class="sidenav-user-pic">
+            <div (click)="fileInput.click()" style="cursor:pointer;" *ngIf="!exibeFotoUsuarioPadrao()">
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+            </div> 
+            <div (click)="fileInput.click()" style="cursor:pointer;" *ngIf="exibeFotoUsuarioPadrao()">
+                <div class="user" [style.background]="getFoto()"></div>  
+            </div>   
+        </li>
+        <small (click)="fileInput.click()" style="cursor:pointer;">Trocar foto <i class="fa fa-pencil" style="padding-left:10px;" aria-hidden="true"></i></small>
+        <li>
+            <input [hidden]="true" type="file" accept=".jpg, .jpeg, .bmp, .png" name="file" class="inputfile" (change)="selectFile($event)" #fileInput/>
         </li>
         <hr>
         <li class="sidenav-itens" routerLinkActive="ativo" *ngIf="auth.temPermissao('COORDENADOR')">
