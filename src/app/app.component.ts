@@ -1,6 +1,6 @@
 import { ErrorHandlerService } from './core/error-handler.service';
 import { LogoutService } from './seguranca/logout.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from './seguranca/auth.service';
@@ -12,7 +12,7 @@ import { ToastyConfig } from 'ng2-toasty';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'app';
   exibindoMenu = true;
 
@@ -23,7 +23,13 @@ export class AppComponent {
     private auth: AuthService,
     private logoutService: LogoutService
   ) {
-    this.toastyConfig.theme = 'bootstrap';
+    this.toastyConfig.theme = 'bootstrap'; 
+    }
+
+  ngOnInit() {
+    if(window.innerWidth < 576) {
+      this.exibindoMenu = false;
+    }
   }
 
   exibindoNavegacao() {
@@ -45,5 +51,11 @@ export class AppComponent {
       .catch(erro => this.errorHandler.handle(erro));
   }
 
+  onResize(event) {
+    const width = event.target.innerWidth;
+    if(width < 576) {
+      this.exibindoMenu = false;
+    }
+  }
 
 }
