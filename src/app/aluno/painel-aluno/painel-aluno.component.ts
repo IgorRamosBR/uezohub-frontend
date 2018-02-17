@@ -36,7 +36,6 @@ export class PainelAlunoComponent implements OnInit {
 
   ngOnInit() {
     let id = this.route.snapshot.params['curso'];
-    console.log('passei aqui');
     if(!id) {
       id = this.verificaPreferencias();
     }
