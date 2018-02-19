@@ -15,7 +15,7 @@
       <div class="col-md-6">
           <mat-form-field class="campo-full-width">
               <input matInput placeholder="Nova senha" type="password" name="novaSenha" [(ngModel)]="novaSenha"  #novasenha="ngModel" required minlength="4" maxlength="200">
-              <mat-error *ngIf="novasenha.hasError('maxlength') && novasenha.hasError('minlength') && (novasenha.dirty || isSubmitted)">
+              <mat-error *ngIf="novasenha.hasError('maxlength') && novasenha.hasError('minlength') && (novasenha.dirty)">
                   Entre com uma senha válida.
               </mat-error>
           </mat-form-field>

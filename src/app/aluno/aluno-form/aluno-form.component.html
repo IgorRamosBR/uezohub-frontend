@@ -8,7 +8,7 @@
         <mat-form-field class="campo-full-width">
           <input matInput placeholder="Nome do aluno" name="name" [(ngModel)]="aluno.nome" #name="ngModel" required minlength="2"
             maxlength="30">
-          <mat-error *ngIf="name.hasError('maxlength') && (name.dirty || isSubmitted)">
+          <mat-error *ngIf="name.hasError('maxlength') && (name.dirty)">
             Entre com um Nome válido.
           </mat-error>
           <mat-error *ngIf="name.hasError('required') && name.dirty">
@@ -27,7 +27,7 @@
       <div class="col-md-6">
         <mat-form-field class="campo-full-width">
           <input matInput placeholder="E-mail" type="email" [email]="true" name="email" [(ngModel)]="aluno.email" #email="ngModel" required  maxlength="60"> 
-          <mat-error *ngIf="email.hasError('email') && (email.dirty || isSubmitted)">
+          <mat-error *ngIf="email.hasError('email') && (email.dirty)">
             Entre com um E-mail válido.
           </mat-error>
           <mat-error *ngIf="email.hasError('required') && email.dirty">
@@ -39,7 +39,7 @@
         <mat-form-field class="campo-full-width">
           <input matInput placeholder="Senha" type="password" name="senha" [(ngModel)]="aluno.senha" #senha="ngModel" required minlength="2"
             maxlength="200">
-          <mat-error *ngIf="senha.hasError('maxlength') && (senha.dirty || isSubmitted)">
+          <mat-error *ngIf="senha.hasError('maxlength') && (senha.dirty)">
             Entre com uma senha válida.
           </mat-error>
           <mat-error *ngIf="senha.hasError('required') && senha.dirty">

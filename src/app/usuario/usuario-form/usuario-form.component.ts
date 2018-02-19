@@ -23,7 +23,7 @@ export class UsuarioFormComponent implements OnInit {
     private alunoService: AlunoService,
     private professorService: ProfessorService,
     private coordenadorService: CoordenadorService,
-    private authService: AuthService,
+    public authService: AuthService,
     private errorHandlerService: ErrorHandlerService,
     private toasty: ToastyService
   ) { }
