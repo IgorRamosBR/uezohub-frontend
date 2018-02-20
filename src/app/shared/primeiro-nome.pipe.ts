@@ -6,6 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class PrimeiroNomePipe implements PipeTransform {
 
   transform(nome: string): string {
+    if(!nome) {
+      return '';
+    }
     const index = nome.indexOf(' ');
     if ( index === -1 ) {
       return nome;
