@@ -11,7 +11,7 @@
   -->
         <mat-form-field class="campo-full-width">
             <input matInput placeholder="Nome do curso" name="name" [(ngModel)]="curso.nome" #name="ngModel" required minlength="2" maxlength="60">
-            <mat-error *ngIf="name.hasError('maxlength') && (name.dirty || isSubmitted)">
+            <mat-error *ngIf="name.hasError('maxlength') && (name.dirty)">
                 Entre com um Nome válido.
             </mat-error>
             <mat-error *ngIf="name.hasError('required') && name.dirty">

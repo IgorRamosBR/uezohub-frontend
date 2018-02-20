@@ -6,12 +6,15 @@ import { RouterModule } from '@angular/router';
 
 import { AlterarSenhaComponent } from './alterar-senha/alterar-senha.component';
 import { UsuarioFormComponent } from './usuario-form/usuario-form.component';
+import { SegurancaModule } from '../seguranca/seguranca.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
+
+    SegurancaModule,
 
     MatInputModule,
     MatButtonModule

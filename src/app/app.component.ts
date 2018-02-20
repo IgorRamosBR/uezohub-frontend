@@ -53,7 +53,7 @@ export class AppComponent implements OnInit{
   }
   
   exibeFotoUsuarioPadrao(): boolean {
-    if(this.usuarioLogado.id != this.auth.jwtPayload.id || this.usuarioLogado.foto != this.auth.usuarioLogado.foto) {
+    if(this.auth.jwtPayload && this.usuarioLogado.id != this.auth.jwtPayload.id || this.usuarioLogado.foto != this.auth.usuarioLogado.foto) {
       this.usuarioLogado = this.auth.usuarioLogado;
     }
     if(this.usuarioLogado.foto) {
