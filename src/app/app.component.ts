@@ -2,13 +2,14 @@ import { environment } from './../environments/environment';
 import { UsuarioService } from './usuario/usuario.service';
 import { ErrorHandlerService } from './core/error-handler.service';
 import { LogoutService } from './seguranca/logout.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from './seguranca/auth.service';
 import { ToastyConfig, ToastyService } from 'ng2-toasty';
 import { Usuario } from './usuario/usuario';
 import { SafeStyle, DomSanitizer } from '@angular/platform-browser';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 
 @Component({
@@ -20,7 +21,15 @@ export class AppComponent implements OnInit{
   title = 'app';
   exibindoMenu = true;
   usuarioLogado = new Usuario();
-  
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
+
+fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+}
+imageCropped(image: string) {
+    this.croppedImage = image;
+}  
   constructor(
     private toastyConfig: ToastyConfig,
     private router: Router,
@@ -29,7 +38,8 @@ export class AppComponent implements OnInit{
     private logoutService: LogoutService,
     private toastyService: ToastyService,
     private usuarioService: UsuarioService,
-    private sanitization: DomSanitizer
+    private sanitization: DomSanitizer,
+    public dialog: MatDialog
   ) {
     this.toastyConfig.theme = 'bootstrap'; 
     }
@@ -101,5 +111,43 @@ export class AppComponent implements OnInit{
   getFoto() {
     return this.sanitization.bypassSecurityTrustStyle(`url(${this.usuarioLogado.foto})`);
   }
+
+  openDialog(): void {
+    let dialogRef = this.dialog.open(UploadFotoDialog, {
+      width: '100%',
+      height: '500px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    })
+
+  }
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'upload-foto-dialog.html',
+})
+export class UploadFotoDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<UploadFotoDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  imageChangedEvent: any = '';
+croppedImage: any = '';
+
+fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+}
+imageCropped(image: string) {
+    this.croppedImage = image;
+}
 
 }

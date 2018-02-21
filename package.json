@@ -29,6 +29,7 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "ng2-toasty": "^4.0.3",
+    "ngx-image-cropper": "^0.1.24",
     "popper.js": "^1.12.9",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"

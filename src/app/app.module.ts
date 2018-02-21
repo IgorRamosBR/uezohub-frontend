@@ -4,11 +4,12 @@ import { AlunoService } from './aluno/aluno.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
+import { AppComponent, UploadFotoDialog } from './app.component';
 import { HttpModule } from '@angular/http';
 
 import { ToastyModule } from 'ng2-toasty';
-import { MatToolbarModule } from '@angular/material';
+import { MatToolbarModule, MatDialogModule, MatButtonModule } from '@angular/material';
+import { ImageCropperModule } from 'ngx-image-cropper';
 import { JwtHelper } from 'angular2-jwt';
 
 import { ProfessorService } from './professor/professor.service';
@@ -34,7 +35,8 @@ import { UsuarioService } from './usuario/usuario.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UploadFotoDialog
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,9 @@ import { UsuarioService } from './usuario/usuario.service';
     HttpModule,
 
     MatToolbarModule,
+    MatDialogModule,
+    MatButtonModule,
+    ImageCropperModule,
     ToastyModule.forRoot(),
 
     AppRoutingModule,
@@ -69,6 +74,7 @@ import { UsuarioService } from './usuario/usuario.service';
 
     JwtHelper
   ],
+  entryComponents: [UploadFotoDialog],
   bootstrap: [AppComponent]
 })
 export class AppModule {

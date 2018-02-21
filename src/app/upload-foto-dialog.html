@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Selecione e ajuste sua foto</h1>
+<div mat-dialog-content>
+
+    <input [hidden]="true" type="file" #file (change)="fileChangeEvent($event)" />
+
+    <image-cropper
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="4 / 3"
+        [resizeToWidth]="128"
+        format="png"
+        (imageCropped)="imageCropped($event)"
+        (imageLoaded)="imageLoaded()"
+        (loadImageFailed)="loadImageFailed()"
+    ></image-cropper>
+    
+    <!--<img [src]="croppedImage" />-->
+    <div class="text-center centralizar-verticalmente">
+        <button mat-raised-button style="font-weight: bold;" (click)="file.click()">Selecione uma foto do seu armazenamento</button>
+    </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button  cdkFocusInitial>Ok</button>
+</div>

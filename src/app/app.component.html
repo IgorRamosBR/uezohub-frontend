@@ -22,7 +22,7 @@
                 <div class="user" [style.background]="getFoto()"></div>  
             </div>   
         </li>
-        <small (click)="fileInput.click()" style="cursor:pointer;">Trocar foto <i class="fa fa-pencil" style="padding-left:10px;" aria-hidden="true"></i></small>
+        <small (click)="openDialog()" style="cursor:pointer;">Trocar foto <i class="fa fa-pencil" style="padding-left:10px;" aria-hidden="true"></i></small>
         <li>
             <input [hidden]="true" type="file" accept=".jpg, .jpeg, .bmp, .png" name="file" class="inputfile" (change)="selectFile($event)" #fileInput/>
         </li>
