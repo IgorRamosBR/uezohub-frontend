@@ -1,15 +1,17 @@
+import { Component, OnInit, Inject } from '@angular/core';
 import { environment } from './../environments/environment';
+import { Router } from '@angular/router';
+import { SafeStyle, DomSanitizer } from '@angular/platform-browser';
+
+import { ToastyConfig, ToastyService } from 'ng2-toasty';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
 import { UsuarioService } from './usuario/usuario.service';
 import { ErrorHandlerService } from './core/error-handler.service';
 import { LogoutService } from './seguranca/logout.service';
-import { Component, OnInit, Inject } from '@angular/core';
-import { Router } from '@angular/router';
-
 import { AuthService } from './seguranca/auth.service';
-import { ToastyConfig, ToastyService } from 'ng2-toasty';
 import { Usuario } from './usuario/usuario';
-import { SafeStyle, DomSanitizer } from '@angular/platform-browser';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { UploadFotoDialogComponent } from './core/upload-foto-dialog/upload-foto-dialog.component';
 
 
 @Component({
@@ -113,7 +115,7 @@ imageCropped(image: string) {
   }
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(UploadFotoDialog, {
+    let dialogRef = this.dialog.open(UploadFotoDialogComponent, {
       width: '100%',
       height: '90%',
       data: {}
@@ -125,55 +127,4 @@ imageCropped(image: string) {
     })
 
   }
-}
-
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'upload-foto-dialog.html',
-})
-export class UploadFotoDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<UploadFotoDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private usuarioService: UsuarioService,
-    private toastyService: ToastyService,
-    private errorHandler: ErrorHandlerService,
-    private auth: AuthService
-  ) { }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  imageChangedEvent: any = '';
-  croppedImage: any = '';
-
-  fileChangeEvent(event: any): void {
-      this.imageChangedEvent = event;
-  }
-  
-  imageCropped(image: string) {
-      this.croppedImage = image;
-  }
-
-  salvar() {
-    if(this.croppedImage == '') {
-      this.onNoClick();
-      return 0;
-    }
-    
-    const file:FileList = this.croppedImage;
-    const id = this.auth.jwtPayload.id;
-    
-
-    this.usuarioService.salvarFoto(id, file)
-      .then(response => {
-        window.location.reload();
-        this.toastyService.success('Foto atualizada com sucesso.');
-        console.log(response.foto);
-      })
-      .catch(erro => this.errorHandler.handle(erro));
-  }
-
 }
