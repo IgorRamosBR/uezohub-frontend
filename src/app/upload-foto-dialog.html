@@ -6,20 +6,24 @@
     <image-cropper
         [imageChangedEvent]="imageChangedEvent"
         [maintainAspectRatio]="true"
-        [aspectRatio]="4 / 3"
+        [aspectRatio]="1 / 1"
         [resizeToWidth]="128"
         format="png"
         (imageCropped)="imageCropped($event)"
-        (imageLoaded)="imageLoaded()"
         (loadImageFailed)="loadImageFailed()"
     ></image-cropper>
     
     <!--<img [src]="croppedImage" />-->
-    <div class="text-center centralizar-verticalmente">
-        <button mat-raised-button style="font-weight: bold;" (click)="file.click()">Selecione uma foto do seu armazenamento</button>
+    <div class="text-center" style="margin-top:150px; margin-bottom:250px;">
+        <button mat-raised-button style="font-weight: bold;" (click)="file.click()" *ngIf="!croppedImage">Selecione uma foto do seu armazenamento</button>
     </div>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button  cdkFocusInitial>Ok</button>
+<div mat-dialog-actions align="bottom" class="dialog-row-button">
+    <div class="dialog-buttons">
+            <p style="flex-grow: 1;">
+                </p>
+        <button mat-button (click)="onNoClick()">Cancelar</button>
+        <button mat-raised-button type="button" color="primary" (click)="salvar()" class="botao">Salvar foto de perfil</button>
+        <button mat-button color="primary" (click)="file.click()" *ngIf="croppedImage">Selecionar outra imagem</button>
+    </div>
 </div>

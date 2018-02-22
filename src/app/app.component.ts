@@ -115,12 +115,13 @@ imageCropped(image: string) {
   openDialog(): void {
     let dialogRef = this.dialog.open(UploadFotoDialog, {
       width: '100%',
-      height: '500px',
+      height: '90%',
       data: {}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      window.location.reload();
     })
 
   }
@@ -134,20 +135,45 @@ export class UploadFotoDialog {
 
   constructor(
     public dialogRef: MatDialogRef<UploadFotoDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private usuarioService: UsuarioService,
+    private toastyService: ToastyService,
+    private errorHandler: ErrorHandlerService,
+    private auth: AuthService
+  ) { }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
   imageChangedEvent: any = '';
-croppedImage: any = '';
+  croppedImage: any = '';
 
-fileChangeEvent(event: any): void {
-    this.imageChangedEvent = event;
-}
-imageCropped(image: string) {
-    this.croppedImage = image;
-}
+  fileChangeEvent(event: any): void {
+      this.imageChangedEvent = event;
+  }
+  
+  imageCropped(image: string) {
+      this.croppedImage = image;
+  }
+
+  salvar() {
+    if(this.croppedImage == '') {
+      this.onNoClick();
+      return 0;
+    }
+    
+    const file:FileList = this.croppedImage;
+    const id = this.auth.jwtPayload.id;
+    
+
+    this.usuarioService.salvarFoto(id, file)
+      .then(response => {
+        window.location.reload();
+        this.toastyService.success('Foto atualizada com sucesso.');
+        console.log(response.foto);
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
 
 }
