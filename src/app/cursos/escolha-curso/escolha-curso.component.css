@@ -4,10 +4,10 @@
 }
 
 .card-curso {
-    width: 280px;
-    height: 156px;
+    width: 250px;
+    height: 150px;
     background-color: #00BFA5;
     margin: 20px 40px;
-    font-size: 28px;
+    font-size: 20px;
     color: #fff;
 }
