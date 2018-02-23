@@ -4,32 +4,34 @@
     <h3 class="texto-secundario"> {{ disciplina.id ? 'Atualizar' : 'Nova'}} Disciplina </h3>
     <hr>
 
-    <mat-form-field class="campo-full-width">
-      <input matInput placeholder="Nome da disciplina" name="name" [(ngModel)]="disciplina.nome" #name="ngModel" required minlength="2"
-        maxlength="60">
-      <mat-error *ngIf="name.hasError('maxlength') && (name.dirty)">
-        Entre com um Nome válido.
-      </mat-error>
-      <mat-error *ngIf="name.hasError('required') && name.dirty">
-        Nome é obrigatório
-      </mat-error>
-    </mat-form-field>
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-sm-6 col-md-8 col-lg-8">
+        <mat-form-field class="campo-full-width">
+          <input matInput placeholder="Nome da disciplina" name="name" [(ngModel)]="disciplina.nome" #name="ngModel" required minlength="2"
+            maxlength="60">
+          <mat-error *ngIf="name.hasError('maxlength') && (name.dirty)">
+            Entre com um Nome válido.
+          </mat-error>
+          <mat-error *ngIf="name.hasError('required') && name.dirty">
+            Nome é obrigatório
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-4">
         <mat-form-field class="campo-full-width">
           <input matInput placeholder="Código" name="codigo" [(ngModel)]="disciplina.codigo" #name="ngModel" minlength="2" maxlength="20">
         </mat-form-field>
       </div>
-      <div class="col-md-4">
+      <div class="col-sm-6 col-md-6">
         <mat-form-field class="campo-full-width">
           <mat-select placeholder="Selecione o curso" name="curso" [(ngModel)]="disciplina.curso.id" required>
-            <mat-option *ngFor="let curso of cursos" [value]="curso.value" >
+            <mat-option *ngFor="let curso of cursos" [value]="curso.value">
               {{ curso.viewValue }}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="col-md-4">
+      <div class="col-sm-6 col-md-6">
         <mat-form-field class="campo-full-width">
           <mat-select placeholder="Associe um professor" name="usuario" [ngModel]="disciplina.usuario?.id" (ngModelChange)="associaProfessor($event)">
             <mat-option *ngFor="let professor of professores" [value]="professor.value">
@@ -39,8 +41,9 @@
         </mat-form-field>
       </div>
     </div>
-    
-    <mat-checkbox [(checked)]="disciplina.ativo" [(ngModel)]="disciplina.ativo" name="ativo">Ativo</mat-checkbox><br>
+
+    <mat-checkbox [(checked)]="disciplina.ativo" [(ngModel)]="disciplina.ativo" name="ativo">Ativo</mat-checkbox>
+    <br>
 
     <button mat-raised-button type="submit" color="primary" class="botao" [disabled]="f.invalid">Salvar</button>
     <button mat-raised-button type="button" color="primary" class="botao" (click)="novo(f)">Novo</button>
@@ -48,58 +51,58 @@
 
   <div class="mat-elevation-z8" style="margin-top: 30px;">
 
-      <div class="filtro-header">
-          <mat-form-field [style.width]="'100%'">
-              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
-          </mat-form-field>
-      </div>
+    <div class="filtro-header">
+      <mat-form-field [style.width]="'100%'">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+      </mat-form-field>
+    </div>
 
-      <mat-table #table [dataSource]="dataSource" matSort>
+    <mat-table #table [dataSource]="dataSource" matSort>
 
-          <!-- Nome Column -->
-          <ng-container matColumnDef="nome">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Disciplina </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
-          </ng-container>
+      <!-- Nome Column -->
+      <ng-container matColumnDef="nome">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Disciplina </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
+      </ng-container>
 
-          <!-- Código Column -->
-          <ng-container matColumnDef="codigo">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Código </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.codigo}} </mat-cell>
-          </ng-container>
+      <!-- Código Column -->
+      <ng-container matColumnDef="codigo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Código </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.codigo}} </mat-cell>
+      </ng-container>
 
-          <!-- Curso Column -->
-          <ng-container matColumnDef="curso">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Curso </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.curso.nome}} </mat-cell>
-          </ng-container>
+      <!-- Curso Column -->
+      <ng-container matColumnDef="curso">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Curso </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.curso.nome}} </mat-cell>
+      </ng-container>
 
-          <!-- Professor Column -->
-          <ng-container matColumnDef="professor">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Professor </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.usuario?.nome}} </mat-cell>
-          </ng-container>
+      <!-- Professor Column -->
+      <ng-container matColumnDef="professor">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Professor </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.usuario?.nome}} </mat-cell>
+      </ng-container>
 
-          <!-- Ativo Column -->
-          <ng-container matColumnDef="ativo">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Ativo </mat-header-cell>
-              <mat-cell *matCellDef="let element" [ngStyle]="{'color':getColor(element.ativo)}">
-                  {{element.ativo | ativoConversor}} </mat-cell>
-          </ng-container>
+      <!-- Ativo Column -->
+      <ng-container matColumnDef="ativo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Ativo </mat-header-cell>
+        <mat-cell *matCellDef="let element" [ngStyle]="{'color':getColor(element.ativo)}">
+          {{element.ativo | ativoConversor}} </mat-cell>
+      </ng-container>
 
-          <!-- Ações Column -->
-          <ng-container matColumnDef="id">
-              <mat-header-cell *matHeaderCellDef style="text-align:center"> Ações </mat-header-cell>
-              <mat-cell *matCellDef="let element">
-                  <div style="text-align:center">
-                      <button mat-button color="primary" style="margin:0 auto" [style.color]="getColor(true)" (click)="editar(element)">Editar</button>
-                  </div>
-              </mat-cell>
-          </ng-container>
+      <!-- Ações Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef style="text-align:center"> Ações </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <div style="text-align:center">
+            <button mat-button color="primary" style="margin:0 auto" [style.color]="getColor(true)" (click)="editar(element)">Editar</button>
+          </div>
+        </mat-cell>
+      </ng-container>
 
-          <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: colunas;">
-          </mat-row>
-      </mat-table>
+      <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: colunas;">
+      </mat-row>
+    </mat-table>
   </div>
 </div>

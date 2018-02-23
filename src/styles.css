@@ -30,7 +30,6 @@ body {
     position: relative;
     width: 1024px;
     left: 310px;
-    top: 64px;
     overflow-y: auto;
 }
 
@@ -69,7 +68,7 @@ body {
     margin-right: 40px;
 }
 
-a:hover .icon-bars{
+#icon-bars:hover{
     color: #00BFA5!important; 
 }
 

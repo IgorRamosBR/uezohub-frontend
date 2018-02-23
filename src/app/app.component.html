@@ -1,7 +1,7 @@
 <div *ngIf="exibindoNavegacao()" (window:resize)="onResize($event)">
     <mat-toolbar class="toolbar">
         <span class="toolbar-toogle" (click)="exibindoMenu = !exibindoMenu" [ngStyle]="{'margin-left': exibindoMenu == false ? 0 : '300px'}">
-            <a href="javascript:;" class="icon-bars">
+            <a href="javascript:;" id="icon-bars">
                 <i class="fa fa-bars"></i>
             </a>
         </span>
