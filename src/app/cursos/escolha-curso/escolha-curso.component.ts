@@ -1,7 +1,13 @@
+import { Observable } from 'rxjs/Observable';
+import { AuthService } from './../../seguranca/auth.service';
+import { AlunoService } from './../../aluno/aluno.service';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { Component, OnInit } from '@angular/core';
 import { CursoService } from '../curso.service';
 import { Router } from '@angular/router';
+import { Aluno } from '../../aluno/aluno';
+import { Curso } from '../curso';
+import { fromPromise } from 'rxjs/observable/fromPromise';
 
 @Component({
   selector: 'app-escolha-curso',
@@ -11,11 +17,16 @@ import { Router } from '@angular/router';
 export class EscolhaCursoComponent implements OnInit{
 
   cursos = [];
+  curso = new Curso();
+  aluno = new Aluno();
+
 
   constructor(
     private cursoService: CursoService,
     private router: Router,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    private alunoService: AlunoService,
+    private auth: AuthService
   ) {}
 
   ngOnInit() {
@@ -30,8 +41,30 @@ export class EscolhaCursoComponent implements OnInit{
       .catch(error => this.errorHandler.handle(error));
   }
 
-  escolheCurso(idCurso) {
-    localStorage.setItem("preferencia_curso", idCurso);
-    this.router.navigate(['/painel-aluno', idCurso]);
+  escolheCurso(nomeCurso) {
+    Observable.fromPromise(this.buscarCursoPorNome(nomeCurso))
+      .flatMap(() => this.buscarAluno())
+      .flatMap(() => this.atualizarAluno())
+      .subscribe(() => this.router.navigate(['/painel-aluno', this.curso.nome]));
+  }
+
+  buscarCursoPorNome(nomeCurso) {
+    let encode = encodeURIComponent(nomeCurso);
+    return this.cursoService.buscarPorNome(encode)
+      .then(curso => {this.curso = curso; console.log(curso);})
+      .catch(error => this.errorHandler.handle(error));
+  }
+
+  buscarAluno() {
+    return this.alunoService.buscarPorId(this.auth.jwtPayload.id)
+      .then(aluno => {this.aluno = aluno; console.log(aluno);})
+      .catch(error => this.errorHandler.handle(error));
+  }
+
+  atualizarAluno() {
+    this.aluno.curso = this.curso;
+    return this.alunoService.atualizar(this.auth.jwtPayload.id, this.aluno)
+      .then(() => console.log(this.aluno))
+      .catch(error => this.errorHandler.handle(error));
   }
 }

@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3" *ngFor="let curso of cursos">
-      <mat-card class="card-curso text-center" (click)="escolheCurso(curso.id)" style="cursor:pointer">
+      <mat-card class="card-curso text-center" (click)="escolheCurso(curso.nome)" style="cursor:pointer">
         <p class="texto-secundario centralizar-verticalmente" style="color:#fff">{{curso.nome}}</p>
       </mat-card>
     </div>

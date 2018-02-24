@@ -9,6 +9,7 @@ import { CoordenadorService } from './../../coordenador/coordenador.service';
 import { ProfessorService } from './../../professor/professor.service';
 import { AlunoService } from './../../aluno/aluno.service';
 import { Usuario } from '../usuario';
+import { Aluno } from '../../aluno/aluno';
 
 @Component({
   selector: 'app-usuario-form',
@@ -65,7 +66,8 @@ export class UsuarioFormComponent implements OnInit {
         .catch(error => this.errorHandlerService.handle(error));
 
     } else if (this.authService.temPermissao('ALUNO')) {
-      this.alunoService.atualizar(this.usuario.id, this.usuario)
+      let aluno:Aluno = Object.assign({}, this.usuario, {curso: undefined});
+      this.alunoService.atualizar(this.usuario.id, aluno)
         .then(() => this.toasty.success('Aluno atualizado com sucesso.'))
         .catch(error => this.errorHandlerService.handle(error));
     }

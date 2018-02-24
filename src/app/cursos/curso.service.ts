@@ -26,6 +26,12 @@ export class CursoService {
       .then(response => response.json());
   }
 
+  buscarPorNome(nome: string): Promise<any> {
+    return this.http.get(`${this.cursoUrl}/nome/${nome}`)
+      .toPromise()
+      .then(response => response.json());
+  }
+
   salvar(curso: Curso): Promise<any> {
     if (curso.ativo === undefined) {
       curso.ativo = false;

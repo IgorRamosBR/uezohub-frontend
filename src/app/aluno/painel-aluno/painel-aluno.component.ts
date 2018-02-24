@@ -1,3 +1,5 @@
+import { AuthService } from './../../seguranca/auth.service';
+import { AlunoService } from './../aluno.service';
 import { CursoService } from './../../cursos/curso.service';
 import { MatSort, MatTableDataSource } from '@angular/material';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -5,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DisciplinaService } from '../../disciplina/disciplina.service';
 import { ErrorHandlerService } from '../../core/error-handler.service';
 import { Curso } from '../../cursos/curso';
+import {Aluno} from '../aluno';
 
 @Component({
   selector: 'app-painel-aluno',
@@ -29,17 +32,15 @@ export class PainelAlunoComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private auth: AuthService,
     private disciplinaService: DisciplinaService,
     private cursoService: CursoService,
+    private alunoService: AlunoService,
     private errorHandlerService: ErrorHandlerService
   ) { }
 
   ngOnInit() {
-    let id = this.route.snapshot.params['curso'];
-    if(!id) {
-      id = this.verificaPreferencias();
-    }
-    this.carregarCurso(id);
+    this.buscaCursoDoAlunoLogado();
   }
 
   applyFilter(filterValue: string) {
@@ -53,7 +54,6 @@ export class PainelAlunoComponent implements OnInit {
     this.nomeDisciplinaSelecionada = row.nome;
     this.tabelaArquivos = true;
     this.tabelaDisciplinas = false;
-    console.log('eei');
   }
 
   selecionaLinha(row) {
@@ -66,17 +66,8 @@ export class PainelAlunoComponent implements OnInit {
     this.linhaSelecionada = -1;
   }
 
-  carregarCurso(id: number) {
-    this.cursoService.buscarPorId(id)
-      .then(curso => {
-        this.curso = curso;
-        this.buscarDisciplinasPorCurso(this.curso.id);
-      })
-      .catch(error => this.errorHandlerService.handle(error));
-  }
-
-  buscarDisciplinasPorCurso(idCurso: number): any {
-    this.disciplinaService.buscarPorCurso(idCurso)
+  buscarDisciplinasPorCurso(): any {
+    this.disciplinaService.buscarPorCurso(this.curso.id)
       .then(disciplinas => {
         this.dataSource = new MatTableDataSource(disciplinas);
         this.dataSource.sort = this.sort;
@@ -84,14 +75,25 @@ export class PainelAlunoComponent implements OnInit {
       .catch(error => this.errorHandlerService.handle(error));
   }
 
-  verificaPreferencias(): number {
-    const id = localStorage.getItem ('preferencia_curso');
-    if(id) {
-      return +id;
-    } else {
-      this.router.navigate(['/escolhe-curso']);
-      return -1;
-    }
+  buscarAluno(): Aluno {
+    let a: Aluno;
+    this.alunoService.buscarPorId(this.auth.jwtPayload.id)
+      .then(aluno => a = aluno)
+      .catch(error => this.errorHandlerService.handle(error));
+    return a;
+  }
+
+  buscaCursoDoAlunoLogado() {
+    this.alunoService.buscarPorId(this.auth.jwtPayload.id)
+      .then(aluno => {
+        if(aluno.curso) {
+          this.curso = aluno.curso;
+          this.buscarDisciplinasPorCurso();
+        } else {
+          this.router.navigate(['/escolhe-curso']);
+        }    
+      })
+      .catch(error => this.errorHandlerService.handle(error)); 
   }
 
   getColor(ativo: boolean) {
