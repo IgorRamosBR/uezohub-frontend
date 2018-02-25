@@ -28,7 +28,7 @@
     <ng-container matColumnDef="data">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Dada do Upload </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        {{element.dataEnvio}} </mat-cell>
+        {{element.dataEnvio | date:'dd/MM/yyyy'}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="link" >
         <mat-header-cell *matHeaderCellDef > Ações </mat-header-cell>
