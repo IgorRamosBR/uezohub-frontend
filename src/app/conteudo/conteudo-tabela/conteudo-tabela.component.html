@@ -31,9 +31,10 @@
         {{element.dataEnvio}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="link" >
-        <mat-header-cell *matHeaderCellDef > Download </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef > Ações </mat-header-cell>
         <mat-cell *matCellDef="let element" >
           <a href="{{element.link}}" download="{{element.nome}}" style="color:black; padding-left:5px;"> <i class="fa fa-download"> </i> </a> 
+          <span *ngIf="coordenador" (click)="excluirConteudo(element.id)" style="color:black; padding-left:5px;"> <i class="fa fa-trash"> </i> </span> 
         </mat-cell>
     </ng-container>
 

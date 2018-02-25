@@ -183,4 +183,8 @@ body {
     cursor: pointer;
 }
 
+.highlight-row {
+    background: #00BFA5;
+}
+
 /* FIM TABELAS */

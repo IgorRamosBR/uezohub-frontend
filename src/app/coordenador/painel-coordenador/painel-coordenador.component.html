@@ -1,4 +1,4 @@
-<div class="row cards">
+<!--<div class="row cards">
     <div class="col-xl-3">
         <mat-card class="card-info">
             <div class="row centralizar-verticalmente">
@@ -62,51 +62,72 @@
         </div>
     </div>
 </div>
+-->
+<p class="texto-secundario subtitulos">Gerenciamento de arquivos</p>
 
 <div class="row">
-    <div class="col-md-6" style="padding:40px">
-        <p class="texto-secundario subtitulos">Solicitações</p>
-        <div class="mat-elevation-z8">
-
-            <div class="filtro-header">
-                <mat-form-field [style.width]="'100%'">
-                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
-                </mat-form-field>
-            </div>
-
-            <mat-table #table [dataSource]="dataSource" matSort>
-
-                <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
-                <ng-container matColumnDef="id">
-                    <mat-header-cell *matHeaderCellDef [hidden]="true"> Id </mat-header-cell>
-                    <mat-cell *matCellDef="let element">{{element.id}} </mat-cell>
-                </ng-container>
-                <!-- Nome Column -->
-                <ng-container matColumnDef="nome">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Aluno </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
-                </ng-container>
-
-                <!-- Aluno Column -->
-                <ng-container matColumnDef="matricula">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Matrícula </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.matricula}} </mat-cell>
-                </ng-container>
-
-                <!-- Situação Column -->
-                <ng-container matColumnDef="situacao">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Situação </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.situacao}} </mat-cell>
-                </ng-container>
-
-                <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: colunas;">
-                </mat-row>
-            </mat-table>
-        </div>
-    </div>
-    <div class="col-md-6">
-
+    <div class="col-md-8">
+      <nav aria-label="breadcrumb" *ngIf="tabelaDisciplinas">
+        <ol class="breadcrumb" style="background:transparent;">
+          <li class="breadcrumb-item active" aria-current="page">Todas as Disciplinas</li>
+        </ol>
+      </nav>
+      <nav aria-label="breadcrumb" *ngIf="tabelaArquivos">
+        <ol class="breadcrumb" style="background:transparent;">
+          <li class="breadcrumb-item" aria-current="page">
+            <a href="javascript:;" (click)="todasAsDisciplinas()">Todas as Disciplinas</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">{{nomeDisciplinaSelecionada}}</li>
+        </ol>
+      </nav>
     </div>
 </div>
+<div class="mat-elevation-z8" *ngIf="tabelaDisciplinas"> 
+
+    <div class="filtro-header">
+        <mat-form-field [style.width]="'100%'">
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+        </mat-form-field>
+    </div>
+
+    <mat-table #table [dataSource]="dataSource" matSort>
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef [hidden]="true"> Id </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.id}} </mat-cell>
+      </ng-container>
+      <!-- Nome Column -->
+      <ng-container matColumnDef="nome">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <i class="fa fa-folder"> </i> {{element.nome}} </mat-cell>
+      </ng-container>
+
+      <!-- Curso Column -->
+      <ng-container matColumnDef="curso">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Curso </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.curso.nome}} </mat-cell>
+      </ng-container>
+
+      <!-- Ativo Column -->
+      <ng-container matColumnDef="ativo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Ativada </mat-header-cell>
+        <mat-cell *matCellDef="let element" [ngStyle]="{'color':getColor(element.ativo)}">
+          {{element.ativo | ativoConversor}} </mat-cell>
+      </ng-container>
+        <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: colunas;" [ngClass]="{'highlight-row': linhaSelecionada == row.id}" (dblclick)="linhaOnClick(row)" (click)="selecionaLinha(row)">
+        </mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+</div>
+
+
+
+<app-conteudo-tabela [coordenador]="true" [idDisciplina]="linhaSelecionada" *ngIf="tabelaArquivos"></app-conteudo-tabela>

@@ -45,4 +45,10 @@ export class ConteudoService {
 
   }
 
+  excluir(id: number): Promise<any> {
+    return this.http.delete(`${this.conteudoUrl}/${id}`)
+      .toPromise()
+      .then();
+  }
+
 }

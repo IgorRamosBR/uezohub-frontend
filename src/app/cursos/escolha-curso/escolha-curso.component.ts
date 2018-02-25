@@ -51,20 +51,20 @@ export class EscolhaCursoComponent implements OnInit{
   buscarCursoPorNome(nomeCurso) {
     let encode = encodeURIComponent(nomeCurso);
     return this.cursoService.buscarPorNome(encode)
-      .then(curso => {this.curso = curso; console.log(curso);})
+      .then(curso => this.curso = curso)
       .catch(error => this.errorHandler.handle(error));
   }
 
   buscarAluno() {
     return this.alunoService.buscarPorId(this.auth.jwtPayload.id)
-      .then(aluno => {this.aluno = aluno; console.log(aluno);})
+      .then(aluno => this.aluno = aluno)
       .catch(error => this.errorHandler.handle(error));
   }
 
   atualizarAluno() {
     this.aluno.curso = this.curso;
     return this.alunoService.atualizar(this.auth.jwtPayload.id, this.aluno)
-      .then(() => console.log(this.aluno))
+      .then()
       .catch(error => this.errorHandler.handle(error));
   }
 }

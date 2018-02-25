@@ -2,6 +2,7 @@ import { MatTableDataSource, MatSort } from '@angular/material';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { ConteudoService } from './../conteudo.service';
 import { Component, OnInit, Input, SimpleChanges, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { ToastyService } from 'ng2-toasty';
 
 @Component({
   selector: 'app-conteudo-tabela',
@@ -12,6 +13,7 @@ export class ConteudoTabelaComponent implements OnInit {
 
   @Input() idDisciplina: any;
   @Input() uploads: any;
+  @Input() coordenador: boolean;
 
   colunas = ['nome', 'responsavel', 'data', 'link'];
   dataSource: MatTableDataSource<any> | null;
@@ -19,14 +21,16 @@ export class ConteudoTabelaComponent implements OnInit {
 
   constructor(
     private conteudoService: ConteudoService,
+    private toastyService: ToastyService,
     private changeDetectorRefs: ChangeDetectorRef,
     private errorHandlerService: ErrorHandlerService
   ) { }
 
   ngOnInit() {
     if (this.idDisciplina) {
-      console.log(this.idDisciplina);
       this.buscarConteudosPorDisciplina(this.idDisciplina);
+    } else {
+      this.buscarTodosOsConteudos();
     }
   }
 
@@ -68,4 +72,12 @@ export class ConteudoTabelaComponent implements OnInit {
       .catch(error => this.errorHandlerService.handle(error));
   }
 
+  excluirConteudo(id: number) {
+    this.conteudoService.excluir(id)
+      .then(() => {
+        this.toastyService.success('Conteúdo apagado com sucesso.');
+        this.buscarTodosOsConteudos();
+      })
+      .catch(error => this.errorHandlerService.handle(error));
+  }
 }
