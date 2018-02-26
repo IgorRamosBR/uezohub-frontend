@@ -1,29 +1,25 @@
-<h1 mat-dialog-title>Selecione e ajuste sua foto</h1>
-<div mat-dialog-content>
 
-    <input [hidden]="true" type="file" #file (change)="fileChangeEvent($event)" />
-
-    <image-cropper
-        [imageChangedEvent]="imageChangedEvent"
-        [maintainAspectRatio]="true"
-        [aspectRatio]="1 / 1"
-        [resizeToWidth]="128"
-        format="png"
-        (imageCropped)="imageCropped($event)"
-        (loadImageFailed)="loadImageFailed()"
-    ></image-cropper>
-    
-    <!--<img [src]="croppedImage" />-->
-    <div class="text-center" style="margin-top:150px; margin-bottom:250px;">
-        <button mat-raised-button style="font-weight: bold;" (click)="file.click()" *ngIf="!croppedImage">Selecione uma foto do seu armazenamento</button>
+<div class="dialog-container">
+    <div class="dialog-title">
+        <p>Selecione e ajuste sua foto</p>
     </div>
-</div>
-<div mat-dialog-actions align="bottom" class="dialog-row-button">
-    <div class="dialog-buttons">
-            <p style="flex-grow: 1;">
-                </p>
-        <button mat-button (click)="onNoClick()">Cancelar</button>
+    
+    <input [hidden]="true" id="inputButton" type="file" #file (change)="fileChangeEvent($event)" />
+
+    <div class="dialog-upload">
+            <image-cropper
+            [imageChangedEvent]="imageChangedEvent"
+            [maintainAspectRatio]="true"
+            [aspectRatio]="1 / 1"
+            [resizeToWidth]="128"
+            (imageCropped)="imageCropped($event)"
+            (loadImageFailed)="loadImageFailed()"
+    ></image-cropper>
+        <button mat-raised-button style="font-weight: bold;" (click)="file.click()" *ngIf="!croppedImage">Selecione uma foto do seu armazenamento</button>
+    </div> 
+    <div class="dialog-actions">
+        <button mat-raised-button (click)="onNoClick()">Cancelar</button>
         <button mat-raised-button type="button" color="primary" (click)="salvar()" class="botao">Salvar foto de perfil</button>
-        <button mat-button color="primary" (click)="file.click()" *ngIf="croppedImage">Selecionar outra imagem</button>
+        <button mat-button color="primary" (click)="novaFoto()" *ngIf="croppedImage">Selecionar outra imagem</button>
     </div>
 </div>

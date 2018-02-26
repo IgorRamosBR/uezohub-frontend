@@ -14,6 +14,10 @@ import { AuthService } from '../../seguranca/auth.service';
 })
 export class UploadFotoDialogComponent implements OnInit {
 
+  
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
+  
   constructor(
     public dialogRef: MatDialogRef<UploadFotoDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -29,9 +33,6 @@ export class UploadFotoDialogComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
-
-  imageChangedEvent: any = '';
-  croppedImage: any = '';
 
   fileChangeEvent(event: any): void {
       this.imageChangedEvent = event;
@@ -58,6 +59,14 @@ export class UploadFotoDialogComponent implements OnInit {
         console.log(response.foto);
       })
       .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  novaFoto() {
+    this.imageChangedEvent = '';
+    this.croppedImage = '';
+    
+    let inputButton: HTMLElement = document.getElementById('inputButton') as HTMLElement;
+    inputButton.click();
   }
 
 
