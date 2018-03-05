@@ -39,14 +39,8 @@ export class UsuarioService {
       .then(response => response.json());
   }
 
-  salvarFoto(id: number, file: FileList) {
-    const formData: FormData = new FormData();
-
-    const files: FileList = file;
-
-    formData.append("file", file[0]);
-
-    return this.fotoHttp.put(`${this.usuarioUrl}/foto/${id}`, formData)
+  salvarFoto(id: number, foto: string) {
+    return this.fotoHttp.put(`${this.usuarioUrl}/foto/${id}`, foto)
       .toPromise()
       .then(response => response.json());
   }

@@ -47,20 +47,19 @@ export class UploadFotoDialogComponent implements OnInit {
       this.onNoClick();
       return 0;
     }
-    
-    const file:FileList = this.croppedImage;
-    const id = this.auth.jwtPayload.id;
-    
-
-    this.usuarioService.salvarFoto(id, file)
+  
+    const id = this.auth.jwtPayload.id;  
+    console.log(this.croppedImage);
+/*
+    this.usuarioService.salvarFoto(id, this.croppedImage)
       .then(response => {
         window.location.reload();
         this.toastyService.success('Foto atualizada com sucesso.');
         console.log(response.foto);
       })
       .catch(erro => this.errorHandler.handle(erro));
+      */
   }
-
   novaFoto() {
     this.imageChangedEvent = '';
     this.croppedImage = '';

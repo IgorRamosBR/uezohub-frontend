@@ -83,7 +83,7 @@ imageCropped(image: string) {
       .catch(erro => this.errorHandler.handle(erro));
   }
 
-  selectFile(event) {
+  /*selectFile(event) {
     const file:FileList = event.target.files;
     const id = this.auth.jwtPayload.id;
 
@@ -94,7 +94,7 @@ imageCropped(image: string) {
         console.log(response.foto);
       })
       .catch(erro => this.errorHandler.handle(erro));
-  }
+  }*/
 
   buscarUsuarioLogado() {
     const id = this.auth.jwtPayload.id;
