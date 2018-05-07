@@ -6,6 +6,6 @@
 export const environment = {
   production: false,
   //API_BASE_URL: 'http://ec2-54-145-125-126.compute-1.amazonaws.com:8080'
-  API_BASE_URL: 'http://34.205.71.183:8080'
   //API_BASE_URL: 'http://localhost:8080'
+  API_BASE_URL: 'http://uezohub-classic-lb-1950583630.us-east-1.elb.amazonaws.com'
 };
