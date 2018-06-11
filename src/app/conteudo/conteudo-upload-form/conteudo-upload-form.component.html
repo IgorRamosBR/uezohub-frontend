@@ -9,7 +9,7 @@
         Escolha a disciplina 
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <form #f=ngForm (ngSubmit)="upload()">
+    <form #f=ngForm (ngSubmit)="upload(f)">
     <mat-form-field>
         <mat-select placeholder="Selecione a Disciplina" name="disciplina" [(ngModel)]="conteudo.disciplina.id" required>
             <mat-option *ngFor="let disciplina of disciplinas" [value]="disciplina.value">

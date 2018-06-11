@@ -79,5 +79,5 @@
       <mat-row *matRowDef="let row; columns: colunas;" [ngClass]="{'highlight-row': linhaSelecionada == row.id}" (dblclick)="linhaOnClick(row)" (click)="selecionaLinha(row)"></mat-row>
     </mat-table>
   </div>
-  <app-conteudo-tabela [idDisciplina]="linhaSelecionada" [uploads]="uploads" *ngIf="tabelaArquivos"></app-conteudo-tabela>
+  <app-conteudo-tabela [coordenador]="true" [idDisciplina]="linhaSelecionada" [uploads]="uploads" *ngIf="tabelaArquivos"></app-conteudo-tabela>
 </div>
