@@ -36,12 +36,14 @@ export class ConteudoUploadFormComponent implements OnInit {
     this.carregaDisciplinas();
   }
 
-  upload() {
+  upload(f: FormGroupDirective) {
     this.conteudo.nome = this.nomeDoArquivo;
     this.conteudoService.upload(this.file, this.conteudo)
       .then( () => {
         this.toastyService.success('Upload concluído com sucesso.');
         this.uploadConcluido.emit();
+        this.nomeDoArquivo = '';
+        f.resetForm();
       })
       .catch( error => this.errorHandlerService.handle(error));
   }
